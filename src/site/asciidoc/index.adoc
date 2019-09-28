@@ -22,33 +22,9 @@
 image::iot-lab.jpg[width=480, float=right]
 
 [.lead]
-Just like OPC-UA, but totally different.
+Security and performance by design, but without the costs.
 
-We are currently probably experiencing the greatest advances in the way we process information in human history.
 
-While these advances are taking over more and more parts of our world, it seems one large segment has continuously been missing out all the fun.
-
-As everyone is talking about IoT, virtualization, BigData, FastData and machine-learning, the manufacturing industry has seemed to been stuck in a closed-source proprietary world.
-
-Unfortunately the industry's Programmable Logic Controllers (PLCs) communicate with a large number of usually incompatible protocols.
-This has made it difficult to create applications that integrate these systems with the new world.
-
-This is where PLC4X™ comes in:
-
-*It is our goal to create a set of libraries, that allow unified access to any type of PLC*
-
-In general we are trying to achieve the same goal OPC-UA is trying to address, but we try to do this by going a completely different path.
-
-While with OPC-UA every device has to be retrofitted with the ability to speak a new protocol and use a common client to speak with these devices,
-PLC4X tries to provide a unified API by implementing drivers for communicating with most industrial controllers in the protocols they natively understand.
-
-Each of these drivers is being implemented from the specs or by reverse engineering protocols in order to be fully Apache 2.0 licensed.
-
-The major benefits of PLC4X™ over OPC-UA, from our point of view are:
-
-- No need to modify existing hardware
-- Activating OPC-UA support on existing PLCs greatly increases the load on the PLCs
-- No need to pay for licenses to activate OPC-UA support
 
 At first we will be concentrating on providing adapters for the most widely used protocol such as:
 
