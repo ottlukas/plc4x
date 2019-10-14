@@ -30,7 +30,7 @@ complexTypeDefinition
 complexType
  : 'type' name=idExpression (LBRACKET params=argumentList RBRACKET)? fieldDefinition+
  | 'discriminatedType' name=idExpression (LBRACKET params=argumentList RBRACKET)? fieldDefinition+
- | 'enum' type=typeReference name=idExpression (LBRACKET params=argumentList RBRACKET)? enumValues=enumValueDefinition+
+ | 'enum' (type=typeReference)? name=idExpression (LBRACKET params=argumentList RBRACKET)? enumValues=enumValueDefinition+
  ;
 
 
@@ -112,9 +112,8 @@ virtualField
  ;
 
 enumValueDefinition
- : LBRACKET valueExpression=expression name=IDENTIFIER (LBRACKET constantValueExpressions=multipleExpressions RBRACKET)? RBRACKET
+ : LBRACKET (valueExpression=expression)? name=IDENTIFIER (LBRACKET constantValueExpressions=multipleExpressions RBRACKET)? RBRACKET
  ;
-
 
 typeReference
  : complexTypeReference=IDENTIFIER

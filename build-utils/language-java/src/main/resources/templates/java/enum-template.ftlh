@@ -48,12 +48,12 @@ import java.util.Map;
 public enum ${typeName} {
 
 <#list type.enumValues as enumValue>
-    ${enumValue.name}((${helper.getLanguageTypeName(type.type, true)}) ${enumValue.value}<#if type.constantNames?has_content>, <#list type.constantNames as constantName>(${helper.getLanguageTypeName(type.getConstantType(constantName), true)}) ${helper.escapeValue(type.getConstantType(constantName), enumValue.getConstant(constantName))?no_esc}<#sep>, </#sep></#list></#if>)<#sep>,
+    ${enumValue.name}(<#if type.type?has_content>(${helper.getLanguageTypeName(type.type, true)}) ${enumValue.value}</#if><#if (type.constantNames?has_content && type.type?has_content)>, </#if><#list type.constantNames as constantName>(${helper.getLanguageTypeName(type.getConstantType(constantName), true)}) ${helper.escapeValue(type.getConstantType(constantName), enumValue.getConstant(constantName))?no_esc}<#sep>, </#sep></#list>)<#sep>,
 </#sep></#list>;
 
     private static final Logger logger = LoggerFactory.getLogger(${typeName}.class);
 
-    private static final Map<${helper.getLanguageTypeName(type.type, false)}, ${typeName}> map;
+    <#if type.type?has_content>private static final Map<${helper.getLanguageTypeName(type.type, false)}, ${typeName}> map;
     static {
         map = new HashMap<>();
         for (${typeName} value : ${typeName}.values()) {
@@ -61,15 +61,15 @@ public enum ${typeName} {
         }
     }
 
-    private ${helper.getLanguageTypeName(type.type, true)} value;
+    private ${helper.getLanguageTypeName(type.type, true)} value;</#if>
     <#if type.constantNames?has_content>
         <#list type.constantNames as constantName>
     private ${helper.getLanguageTypeName(type.getConstantType(constantName), true)} ${constantName};
         </#list>
     </#if>
 
-    ${typeName}(${helper.getLanguageTypeName(type.type, true)} value<#if type.constantNames?has_content>, <#list type.constantNames as constantName>${helper.getLanguageTypeName(type.getConstantType(constantName), true)} ${constantName}<#sep>, </#sep></#list></#if>) {
-        this.value = value;
+    ${typeName}(<#if type.type?has_content>${helper.getLanguageTypeName(type.type, true)} value</#if><#if (type.constantNames?has_content && type.type?has_content)>, </#if><#list type.constantNames as constantName>${helper.getLanguageTypeName(type.getConstantType(constantName), true)} ${constantName}<#sep>, </#sep></#list>) {
+        <#if type.type?has_content>this.value = value;</#if>
         <#if type.constantNames?has_content>
             <#list type.constantNames as constantName>
         this.${constantName} = ${constantName};
@@ -77,9 +77,10 @@ public enum ${typeName} {
         </#if>
     }
 
-    public ${helper.getLanguageTypeName(type.type, true)} getValue() {
+    <#if type.type?has_content>public ${helper.getLanguageTypeName(type.type, true)} getValue() {
         return value;
     }
+    </#if>
 
     <#if type.constantNames?has_content>
         <#list type.constantNames as constantName>
@@ -89,11 +90,12 @@ public enum ${typeName} {
 
         </#list>
     </#if>
-    public static ${typeName} valueOf(${helper.getLanguageTypeName(type.type, true)} value) {
+    <#if type.type?has_content>public static ${typeName} valueOf(${helper.getLanguageTypeName(type.type, true)} value) {
         if (!map.containsKey(value)) {
             logger.error("No ${typeName} for value {}", value);
         }
         return map.get(value);
     }
+    </#if>
 
 }
