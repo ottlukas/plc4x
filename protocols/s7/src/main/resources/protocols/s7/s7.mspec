@@ -231,7 +231,7 @@
     [simple  uint 8       'returnCode']
     [enum    PayloadSize  'transportSize']
     [simple  uint 16      'dataLength']
-    [array   uint 8       'data' count 'dataLength / 8']
+    [array   int 8        'data' count 'dataLength / 8']
     [padding uint 8       'pad' '0x00' '(dataLength / 8) % 2 == 1']
 ]
 
