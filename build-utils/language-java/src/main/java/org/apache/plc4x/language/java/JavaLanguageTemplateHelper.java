@@ -331,6 +331,15 @@ public class JavaLanguageTemplateHelper implements FreemarkerLanguageTemplateHel
                 }
             }
         }
+        for (Field field : complexTypeDefinition.getParentPropertyFields()) {
+            if(field instanceof EnumField) {
+                EnumField enumField = (EnumField) field;
+                if(enumField.getType() instanceof ComplexTypeReference) {
+                    ComplexTypeReference complexTypeReference = (ComplexTypeReference) enumField.getType();
+                    types.put(complexTypeReference.getName(),  complexTypeReference);
+                }
+            }
+        }
         return types.values();
     }
 
@@ -504,6 +513,9 @@ public class JavaLanguageTemplateHelper implements FreemarkerLanguageTemplateHel
                 }
                 sb.append(")");
             }
+            if(vl.getIndex() != VariableLiteral.NO_INDEX) {
+                sb.append("[").append(vl.getIndex()).append("]");
+            }
             return sb.toString() + ((vl.getChild() != null) ? "." + toVariableExpressionRest(vl.getChild()) : "");
         }
         return vl.getName() + ((vl.getChild() != null) ? "." + toVariableExpressionRest(vl.getChild()) : "");
@@ -619,6 +631,8 @@ public class JavaLanguageTemplateHelper implements FreemarkerLanguageTemplateHel
                         return "'" + valueString + "'";
                     }
                     break;
+                case STRING:
+                    return "\"" + valueString + "\"";
             }
         }
         return valueString;

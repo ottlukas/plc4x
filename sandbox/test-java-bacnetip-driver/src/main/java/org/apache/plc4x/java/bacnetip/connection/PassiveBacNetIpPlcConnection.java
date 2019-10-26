@@ -44,19 +44,22 @@ public class PassiveBacNetIpPlcConnection extends NettyPlcConnection implements 
 
     private static final Logger logger = LoggerFactory.getLogger(PassiveBacNetIpPlcConnection.class);
 
-    public PassiveBacNetIpPlcConnection(RawSocketIpAddress address, String params) {
+    private final ChannelHandler handler;
+
+    public PassiveBacNetIpPlcConnection(RawSocketIpAddress address, String params, ChannelHandler handler) {
         this(new RawSocketChannelFactory(address.getDeviceName(), null,
-            address.getPort(), RawSocketAddress.ALL_PROTOCOLS, new UdpIpPacketHandler()), params);
+            address.getPort(), RawSocketAddress.ALL_PROTOCOLS, new UdpIpPacketHandler()), params, handler);
     }
 
-    public PassiveBacNetIpPlcConnection(ChannelFactory channelFactory, String params) {
+    public PassiveBacNetIpPlcConnection(ChannelFactory channelFactory, String params, ChannelHandler handler) {
         super(channelFactory, true);
+        this.handler = handler;
     }
 
     @Override
     protected void sendChannelCreatedEvent() {
-        // Send an event to the pipeline telling the Protocol filters what's going on.
-        channel.pipeline().fireUserEventTriggered(new ConnectEvent());
+        // As this type of protocol doesn't require any form of connection, we just send the connected event.
+        channel.pipeline().fireUserEventTriggered(new ConnectedEvent());
     }
 
     @Override
@@ -82,7 +85,7 @@ public class PassiveBacNetIpPlcConnection extends NettyPlcConnection implements 
                     }
                 });
                 pipeline.addLast(new BacNetIpProtocol());
-                pipeline.addLast(new HelloWorldProtocol());
+                pipeline.addLast(handler);
             }
         };
     }
