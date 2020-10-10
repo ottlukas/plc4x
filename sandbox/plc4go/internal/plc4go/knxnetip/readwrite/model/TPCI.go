@@ -1,3 +1,6 @@
+//
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
 // distributed with this work for additional information
 // regarding copyright ownership.  The ASF licenses this file
 // to you under the Apache License, Version 2.0 (the
@@ -13,15 +16,24 @@
 // specific language governing permissions and limitations
 // under the License.
 //
-package main
+package model
 
-import (
-	"plc4x.apache.org/plc4go-modbus-driver/0.8.0/cmd/main/drivers"
+import "plc4x.apache.org/plc4go-modbus-driver/0.8.0/internal/plc4go/spi"
+
+type TPCI uint8
+
+const (
+	TPCI_UNNUMBERED_DATA_PACKET TPCI = 0x0
+	TPCI_UNNUMBERED             TPCI = 0x1
+	TPCI_NUMBERED_DATA_PACKET   TPCI = 0x2
+	TPCI_NUMBERED_CONTROL_DATA  TPCI = 0x3
 )
 
-func main() {
-	//drivers.BacnetIp()
-	drivers.KnxNetIp()
-	drivers.Modbus()
-	//drivers.S7()
+func TPCIParse(io spi.ReadBuffer) (TPCI, error) {
+	// TODO: Implement ...
+	return 0, nil
+}
+
+func (e TPCI) Serialize(io spi.WriteBuffer) {
+	// TODO: Implement ...
 }

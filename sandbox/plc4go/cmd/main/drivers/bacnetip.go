@@ -13,15 +13,26 @@
 // specific language governing permissions and limitations
 // under the License.
 //
-package main
+package drivers
 
-import (
-	"plc4x.apache.org/plc4go-modbus-driver/0.8.0/cmd/main/drivers"
+/*import (
+	"encoding/hex"
+	"plc4x.apache.org/plc4go-modbus-driver/0.8.0/internal/plc4go/bacnetip/readwrite/model"
+	"plc4x.apache.org/plc4go-modbus-driver/0.8.0/internal/plc4go/spi"
 )
 
-func main() {
-	//drivers.BacnetIp()
-	drivers.KnxNetIp()
-	drivers.Modbus()
-	//drivers.S7()
-}
+func BacnetIp() {
+	request, err := hex.DecodeString("000a00000006010300000004")
+	if err != nil {
+		// Output an error ...
+	}
+	rb := spi.ReadBufferNew(request)
+	adu, err := model.BVLCParse(*rb)
+	if err != nil {
+		// Output an error ...
+	}
+	if adu != nil {
+		// Output success ...
+	}
+
+}*/

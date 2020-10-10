@@ -1,3 +1,6 @@
+//
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
 // distributed with this work for additional information
 // regarding copyright ownership.  The ASF licenses this file
 // to you under the Apache License, Version 2.0 (the
@@ -13,15 +16,23 @@
 // specific language governing permissions and limitations
 // under the License.
 //
-package main
+package model
 
-import (
-	"plc4x.apache.org/plc4go-modbus-driver/0.8.0/cmd/main/drivers"
+import "plc4x.apache.org/plc4go-modbus-driver/0.8.0/internal/plc4go/spi"
+
+type BACnetNotifyType uint8
+
+const (
+	BACnetNotifyType_ALARM            BACnetNotifyType = 0x0
+	BACnetNotifyType_EVENT            BACnetNotifyType = 0x1
+	BACnetNotifyType_ACK_NOTIFICATION BACnetNotifyType = 0x2
 )
 
-func main() {
-	//drivers.BacnetIp()
-	drivers.KnxNetIp()
-	drivers.Modbus()
-	//drivers.S7()
+func BACnetNotifyTypeParse(io spi.ReadBuffer) (BACnetNotifyType, error) {
+	// TODO: Implement ...
+	return 0, nil
+}
+
+func (e BACnetNotifyType) Serialize(io spi.WriteBuffer) {
+	// TODO: Implement ...
 }
