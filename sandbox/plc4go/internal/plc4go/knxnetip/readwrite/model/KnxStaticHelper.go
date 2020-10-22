@@ -16,12 +16,31 @@
 // specific language governing permissions and limitations
 // under the License.
 //
-module plc4x.apache.org/plc4go-modbus-driver/0.8.0
+package model
 
-go 1.15
-
-require github.com/sirupsen/logrus v1.7.0
-
-require (
-	github.com/icza/bitio v1.0.0
+import (
+    "math"
+    "plc4x.apache.org/plc4go-modbus-driver/v0/internal/plc4go/spi"
 )
+
+func KnxHelperBytesToF16(io *spi.ReadBuffer) (float32, error) {
+    negative, err := io.ReadBit()
+    if err != nil {
+        return 0.0, err
+    }
+    exponent, err := io.ReadUint64(4)
+    if err != nil {
+        return 0.0, err
+    }
+    mantissa, err := io.ReadUint64(11)
+    if err != nil {
+        return 0.0, err
+    }
+    mantissaPart := 0.01 * float32(mantissa)
+    powPart := math.Pow(float64(2), float64(exponent))
+    if negative {
+        return -1 * mantissaPart * float32(powPart), nil
+    } else {
+        return mantissaPart * float32(powPart), nil
+    }
+}
