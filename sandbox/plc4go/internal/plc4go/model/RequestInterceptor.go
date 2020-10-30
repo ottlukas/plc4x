@@ -18,5 +18,21 @@
 //
 package model
 
-type PlcWriteResponse interface {
+import (
+	"plc4x.apache.org/plc4go-modbus-driver/v0/pkg/plc4go/model"
+)
+
+type ReadRequestInterceptor interface {
+	InterceptReadRequest(readRequest model.PlcReadRequest) []model.PlcReadRequest
+	ProcessReadResponses(readRequest model.PlcReadRequest, readResults []model.PlcReadRequestResult) model.PlcReadRequestResult
+}
+
+type WriteRequestInterceptor interface {
+	InterceptWriteRequest(writeRequest model.PlcWriteRequest) []model.PlcWriteRequest
+	ProcessWriteResponses(writeRequest model.PlcWriteRequest, writeResults []model.PlcWriteRequestResult) model.PlcWriteRequestResult
+}
+
+type RequestInterceptor interface {
+	ReadRequestInterceptor
+	WriteRequestInterceptor
 }
