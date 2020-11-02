@@ -16,9 +16,9 @@
 // specific language governing permissions and limitations
 // under the License.
 //
-package model
+package spi
 
-type PlcField interface {
-	GetTypeName() string
-	GetQuantity() uint16
+type HandlerExposer interface {
+	GetPlcFieldHandler() PlcFieldHandler
+	GetPlcValueHandler() PlcValueHandler
 }
