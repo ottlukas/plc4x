@@ -16,25 +16,25 @@
 // specific language governing permissions and limitations
 // under the License.
 //
-package model
+package knxnetip
 
-import "plc4x.apache.org/plc4go/v0/pkg/plc4go/values"
+import (
+    "plc4x.apache.org/plc4go/v0/internal/plc4go/spi"
+    "plc4x.apache.org/plc4go/v0/pkg/plc4go/model"
+    "plc4x.apache.org/plc4go/v0/pkg/plc4go/values"
+)
 
-type PlcWriteRequestBuilder interface {
-	AddItem(name string, query string, value interface{})
-	Build() (PlcWriteRequest, error)
+type KnxNetIpValueHandler struct {
+    spi.PlcValueHandler
 }
 
-type PlcWriteRequestResult struct {
-	Request  PlcWriteRequest
-	Response PlcWriteResponse
-	Err      error
+func NewValueHandler() KnxNetIpValueHandler {
+    return KnxNetIpValueHandler{}
 }
 
-type PlcWriteRequest interface {
-	Execute() <-chan PlcWriteRequestResult
-	GetFieldNames() []string
-	GetField(name string) PlcField
-	GetValue(name string) values.PlcValue
-	PlcRequest
+func (m KnxNetIpValueHandler) NewPlcValue(field model.PlcField, value interface{}) (values.PlcValue, error) {
+    return nil, nil
 }
+
+
+
