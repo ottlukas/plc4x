@@ -254,7 +254,7 @@ public class Plc4xSourceTask extends SourceTask {
         }
     }
 
-    private Schema getSchema(Object value) {
+    private Schema getSchema(Object value) {        
         Objects.requireNonNull(value);
 
         if(value instanceof List) {
