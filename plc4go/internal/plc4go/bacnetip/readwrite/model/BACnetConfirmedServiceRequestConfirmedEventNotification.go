@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestConfirmedEventNotification) GetTypeName() 
 	return "BACnetConfirmedServiceRequestConfirmedEventNotification"
 }
 
+func (m *BACnetConfirmedServiceRequestConfirmedEventNotification) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestConfirmedEventNotification"
+}
+
 func (m *BACnetConfirmedServiceRequestConfirmedEventNotification) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

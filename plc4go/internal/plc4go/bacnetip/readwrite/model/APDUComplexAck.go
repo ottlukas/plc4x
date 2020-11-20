@@ -95,6 +95,10 @@ func (m *APDUComplexAck) GetTypeName() string {
 	return "APDUComplexAck"
 }
 
+func (m *APDUComplexAck) GetTypeName() string {
+    return "APDUComplexAck"
+}
+
 func (m *APDUComplexAck) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

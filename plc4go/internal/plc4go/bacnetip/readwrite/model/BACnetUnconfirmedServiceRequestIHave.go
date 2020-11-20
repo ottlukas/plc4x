@@ -81,6 +81,10 @@ func (m *BACnetUnconfirmedServiceRequestIHave) GetTypeName() string {
 	return "BACnetUnconfirmedServiceRequestIHave"
 }
 
+func (m *BACnetUnconfirmedServiceRequestIHave) GetTypeName() string {
+    return "BACnetUnconfirmedServiceRequestIHave"
+}
+
 func (m *BACnetUnconfirmedServiceRequestIHave) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

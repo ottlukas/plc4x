@@ -84,6 +84,10 @@ func (m *S7VarRequestParameterItemAddress) GetTypeName() string {
 	return "S7VarRequestParameterItemAddress"
 }
 
+func (m *S7VarRequestParameterItemAddress) GetTypeName() string {
+    return "S7VarRequestParameterItemAddress"
+}
+
 func (m *S7VarRequestParameterItemAddress) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

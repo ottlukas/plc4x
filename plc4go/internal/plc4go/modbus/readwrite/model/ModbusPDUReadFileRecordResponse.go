@@ -92,6 +92,10 @@ func (m *ModbusPDUReadFileRecordResponse) GetTypeName() string {
 	return "ModbusPDUReadFileRecordResponse"
 }
 
+func (m *ModbusPDUReadFileRecordResponse) GetTypeName() string {
+    return "ModbusPDUReadFileRecordResponse"
+}
+
 func (m *ModbusPDUReadFileRecordResponse) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

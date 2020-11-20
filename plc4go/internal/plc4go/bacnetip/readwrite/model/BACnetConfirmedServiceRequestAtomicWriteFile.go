@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestAtomicWriteFile) GetTypeName() string {
 	return "BACnetConfirmedServiceRequestAtomicWriteFile"
 }
 
+func (m *BACnetConfirmedServiceRequestAtomicWriteFile) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestAtomicWriteFile"
+}
+
 func (m *BACnetConfirmedServiceRequestAtomicWriteFile) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

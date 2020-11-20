@@ -188,3 +188,23 @@ func (e DataTransportSize) String() string {
 	}
 	return ""
 }
+
+func (e DataTransportSize) String() string {
+    switch e {
+    case DataTransportSize_NULL:
+        return "NULL"
+    case DataTransportSize_BIT:
+        return "BIT"
+    case DataTransportSize_BYTE_WORD_DWORD:
+        return "BYTE_WORD_DWORD"
+    case DataTransportSize_INTEGER:
+        return "INTEGER"
+    case DataTransportSize_DINTEGER:
+        return "DINTEGER"
+    case DataTransportSize_REAL:
+        return "REAL"
+    case DataTransportSize_OCTET_STRING:
+        return "OCTET_STRING"
+    }
+    return ""
+}

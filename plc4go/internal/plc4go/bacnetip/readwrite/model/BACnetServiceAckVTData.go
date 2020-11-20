@@ -81,6 +81,10 @@ func (m *BACnetServiceAckVTData) GetTypeName() string {
 	return "BACnetServiceAckVTData"
 }
 
+func (m *BACnetServiceAckVTData) GetTypeName() string {
+    return "BACnetServiceAckVTData"
+}
+
 func (m *BACnetServiceAckVTData) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

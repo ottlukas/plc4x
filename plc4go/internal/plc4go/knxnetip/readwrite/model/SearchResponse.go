@@ -88,6 +88,10 @@ func (m *SearchResponse) GetTypeName() string {
 	return "SearchResponse"
 }
 
+func (m *SearchResponse) GetTypeName() string {
+    return "SearchResponse"
+}
+
 func (m *SearchResponse) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

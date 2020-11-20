@@ -84,6 +84,10 @@ func (m *DescriptionRequest) GetTypeName() string {
 	return "DescriptionRequest"
 }
 
+func (m *DescriptionRequest) GetTypeName() string {
+    return "DescriptionRequest"
+}
+
 func (m *DescriptionRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

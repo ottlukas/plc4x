@@ -87,6 +87,10 @@ func (m *APDUError) GetTypeName() string {
 	return "APDUError"
 }
 
+func (m *APDUError) GetTypeName() string {
+    return "APDUError"
+}
+
 func (m *APDUError) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

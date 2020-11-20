@@ -90,6 +90,10 @@ func (m *COTPPacketConnectionResponse) GetTypeName() string {
 	return "COTPPacketConnectionResponse"
 }
 
+func (m *COTPPacketConnectionResponse) GetTypeName() string {
+    return "COTPPacketConnectionResponse"
+}
+
 func (m *COTPPacketConnectionResponse) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

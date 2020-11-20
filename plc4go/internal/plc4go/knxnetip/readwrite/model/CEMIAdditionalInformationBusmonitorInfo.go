@@ -98,6 +98,10 @@ func (m *CEMIAdditionalInformationBusmonitorInfo) GetTypeName() string {
 	return "CEMIAdditionalInformationBusmonitorInfo"
 }
 
+func (m *CEMIAdditionalInformationBusmonitorInfo) GetTypeName() string {
+    return "CEMIAdditionalInformationBusmonitorInfo"
+}
+
 func (m *CEMIAdditionalInformationBusmonitorInfo) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

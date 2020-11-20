@@ -95,6 +95,10 @@ func (m *S7AddressAny) GetTypeName() string {
 	return "S7AddressAny"
 }
 
+func (m *S7AddressAny) GetTypeName() string {
+    return "S7AddressAny"
+}
+
 func (m *S7AddressAny) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

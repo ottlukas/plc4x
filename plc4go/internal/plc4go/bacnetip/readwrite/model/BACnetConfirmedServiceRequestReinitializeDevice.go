@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestReinitializeDevice) GetTypeName() string {
 	return "BACnetConfirmedServiceRequestReinitializeDevice"
 }
 
+func (m *BACnetConfirmedServiceRequestReinitializeDevice) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestReinitializeDevice"
+}
+
 func (m *BACnetConfirmedServiceRequestReinitializeDevice) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

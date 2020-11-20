@@ -88,6 +88,10 @@ func (m *KnxGroupAddress3Level) GetTypeName() string {
 	return "KnxGroupAddress3Level"
 }
 
+func (m *KnxGroupAddress3Level) GetTypeName() string {
+    return "KnxGroupAddress3Level"
+}
+
 func (m *KnxGroupAddress3Level) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestWritePropertyMultiple) GetTypeName() strin
 	return "BACnetConfirmedServiceRequestWritePropertyMultiple"
 }
 
+func (m *BACnetConfirmedServiceRequestWritePropertyMultiple) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestWritePropertyMultiple"
+}
+
 func (m *BACnetConfirmedServiceRequestWritePropertyMultiple) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

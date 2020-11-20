@@ -88,6 +88,10 @@ func (m *ConnectionRequest) GetTypeName() string {
 	return "ConnectionRequest"
 }
 
+func (m *ConnectionRequest) GetTypeName() string {
+    return "ConnectionRequest"
+}
+
 func (m *ConnectionRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

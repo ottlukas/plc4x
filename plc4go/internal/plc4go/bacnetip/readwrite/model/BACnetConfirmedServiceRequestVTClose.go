@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestVTClose) GetTypeName() string {
 	return "BACnetConfirmedServiceRequestVTClose"
 }
 
+func (m *BACnetConfirmedServiceRequestVTClose) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestVTClose"
+}
+
 func (m *BACnetConfirmedServiceRequestVTClose) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

@@ -67,6 +67,10 @@ func (m *TPKTPacket) GetTypeName() string {
 	return "TPKTPacket"
 }
 
+func (m *TPKTPacket) GetTypeName() string {
+    return "TPKTPacket"
+}
+
 func (m *TPKTPacket) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

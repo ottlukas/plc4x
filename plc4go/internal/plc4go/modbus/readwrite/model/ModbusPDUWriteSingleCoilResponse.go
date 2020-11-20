@@ -94,6 +94,10 @@ func (m *ModbusPDUWriteSingleCoilResponse) GetTypeName() string {
 	return "ModbusPDUWriteSingleCoilResponse"
 }
 
+func (m *ModbusPDUWriteSingleCoilResponse) GetTypeName() string {
+    return "ModbusPDUWriteSingleCoilResponse"
+}
+
 func (m *ModbusPDUWriteSingleCoilResponse) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

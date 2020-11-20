@@ -94,6 +94,10 @@ func (m *ModbusPDUGetComEventCounterResponse) GetTypeName() string {
 	return "ModbusPDUGetComEventCounterResponse"
 }
 
+func (m *ModbusPDUGetComEventCounterResponse) GetTypeName() string {
+    return "ModbusPDUGetComEventCounterResponse"
+}
+
 func (m *ModbusPDUGetComEventCounterResponse) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

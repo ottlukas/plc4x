@@ -130,3 +130,17 @@ func (e CEMIPriority) String() string {
 	}
 	return ""
 }
+
+func (e CEMIPriority) String() string {
+    switch e {
+    case CEMIPriority_SYSTEM:
+        return "SYSTEM"
+    case CEMIPriority_NORMAL:
+        return "NORMAL"
+    case CEMIPriority_URGENT:
+        return "URGENT"
+    case CEMIPriority_LOW:
+        return "LOW"
+    }
+    return ""
+}

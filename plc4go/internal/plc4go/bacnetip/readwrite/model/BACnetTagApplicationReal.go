@@ -88,6 +88,10 @@ func (m *BACnetTagApplicationReal) GetTypeName() string {
 	return "BACnetTagApplicationReal"
 }
 
+func (m *BACnetTagApplicationReal) GetTypeName() string {
+    return "BACnetTagApplicationReal"
+}
+
 func (m *BACnetTagApplicationReal) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

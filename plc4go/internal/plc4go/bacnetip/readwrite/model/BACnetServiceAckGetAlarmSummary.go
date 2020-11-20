@@ -81,6 +81,10 @@ func (m *BACnetServiceAckGetAlarmSummary) GetTypeName() string {
 	return "BACnetServiceAckGetAlarmSummary"
 }
 
+func (m *BACnetServiceAckGetAlarmSummary) GetTypeName() string {
+    return "BACnetServiceAckGetAlarmSummary"
+}
+
 func (m *BACnetServiceAckGetAlarmSummary) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

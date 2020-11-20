@@ -87,6 +87,10 @@ func (m *DisconnectRequest) GetTypeName() string {
 	return "DisconnectRequest"
 }
 
+func (m *DisconnectRequest) GetTypeName() string {
+    return "DisconnectRequest"
+}
+
 func (m *DisconnectRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

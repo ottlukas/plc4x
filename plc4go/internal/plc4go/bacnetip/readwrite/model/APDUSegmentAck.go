@@ -93,6 +93,10 @@ func (m *APDUSegmentAck) GetTypeName() string {
 	return "APDUSegmentAck"
 }
 
+func (m *APDUSegmentAck) GetTypeName() string {
+    return "APDUSegmentAck"
+}
+
 func (m *APDUSegmentAck) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

@@ -88,6 +88,10 @@ func (m *S7PayloadUserData) GetTypeName() string {
 	return "S7PayloadUserData"
 }
 
+func (m *S7PayloadUserData) GetTypeName() string {
+    return "S7PayloadUserData"
+}
+
 func (m *S7PayloadUserData) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

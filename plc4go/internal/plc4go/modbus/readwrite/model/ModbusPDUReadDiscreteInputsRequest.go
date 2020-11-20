@@ -94,6 +94,10 @@ func (m *ModbusPDUReadDiscreteInputsRequest) GetTypeName() string {
 	return "ModbusPDUReadDiscreteInputsRequest"
 }
 
+func (m *ModbusPDUReadDiscreteInputsRequest) GetTypeName() string {
+    return "ModbusPDUReadDiscreteInputsRequest"
+}
+
 func (m *ModbusPDUReadDiscreteInputsRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

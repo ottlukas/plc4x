@@ -93,6 +93,10 @@ func (m *S7ParameterSetupCommunication) GetTypeName() string {
 	return "S7ParameterSetupCommunication"
 }
 
+func (m *S7ParameterSetupCommunication) GetTypeName() string {
+    return "S7ParameterSetupCommunication"
+}
+
 func (m *S7ParameterSetupCommunication) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

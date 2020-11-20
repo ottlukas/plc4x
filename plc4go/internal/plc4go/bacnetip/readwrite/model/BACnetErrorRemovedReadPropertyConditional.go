@@ -81,6 +81,10 @@ func (m *BACnetErrorRemovedReadPropertyConditional) GetTypeName() string {
 	return "BACnetErrorRemovedReadPropertyConditional"
 }
 
+func (m *BACnetErrorRemovedReadPropertyConditional) GetTypeName() string {
+    return "BACnetErrorRemovedReadPropertyConditional"
+}
+
 func (m *BACnetErrorRemovedReadPropertyConditional) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

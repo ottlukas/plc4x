@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestLifeSafetyOperation) GetTypeName() string 
 	return "BACnetConfirmedServiceRequestLifeSafetyOperation"
 }
 
+func (m *BACnetConfirmedServiceRequestLifeSafetyOperation) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestLifeSafetyOperation"
+}
+
 func (m *BACnetConfirmedServiceRequestLifeSafetyOperation) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

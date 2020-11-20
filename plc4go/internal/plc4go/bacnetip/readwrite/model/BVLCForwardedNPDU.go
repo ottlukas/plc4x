@@ -88,6 +88,10 @@ func (m *BVLCForwardedNPDU) GetTypeName() string {
 	return "BVLCForwardedNPDU"
 }
 
+func (m *BVLCForwardedNPDU) GetTypeName() string {
+    return "BVLCForwardedNPDU"
+}
+
 func (m *BVLCForwardedNPDU) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

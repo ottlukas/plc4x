@@ -86,6 +86,10 @@ func (m *TunnelingRequest) GetTypeName() string {
 	return "TunnelingRequest"
 }
 
+func (m *TunnelingRequest) GetTypeName() string {
+    return "TunnelingRequest"
+}
+
 func (m *TunnelingRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceACKAtomicReadFile) GetTypeName() string {
 	return "BACnetConfirmedServiceACKAtomicReadFile"
 }
 
+func (m *BACnetConfirmedServiceACKAtomicReadFile) GetTypeName() string {
+    return "BACnetConfirmedServiceACKAtomicReadFile"
+}
+
 func (m *BACnetConfirmedServiceACKAtomicReadFile) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

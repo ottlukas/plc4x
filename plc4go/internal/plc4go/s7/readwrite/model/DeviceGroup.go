@@ -123,3 +123,15 @@ func (e DeviceGroup) String() string {
 	}
 	return ""
 }
+
+func (e DeviceGroup) String() string {
+    switch e {
+    case DeviceGroup_PG_OR_PC:
+        return "PG_OR_PC"
+    case DeviceGroup_OS:
+        return "OS"
+    case DeviceGroup_OTHERS:
+        return "OTHERS"
+    }
+    return ""
+}

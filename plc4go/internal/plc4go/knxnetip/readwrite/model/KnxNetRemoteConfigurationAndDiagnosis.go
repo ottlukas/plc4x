@@ -84,6 +84,10 @@ func (m *KnxNetRemoteConfigurationAndDiagnosis) GetTypeName() string {
 	return "KnxNetRemoteConfigurationAndDiagnosis"
 }
 
+func (m *KnxNetRemoteConfigurationAndDiagnosis) GetTypeName() string {
+    return "KnxNetRemoteConfigurationAndDiagnosis"
+}
+
 func (m *KnxNetRemoteConfigurationAndDiagnosis) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

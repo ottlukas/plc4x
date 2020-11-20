@@ -89,6 +89,10 @@ func (m *ModbusPDUGetComEventLogRequest) GetTypeName() string {
 	return "ModbusPDUGetComEventLogRequest"
 }
 
+func (m *ModbusPDUGetComEventLogRequest) GetTypeName() string {
+    return "ModbusPDUGetComEventLogRequest"
+}
+
 func (m *ModbusPDUGetComEventLogRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

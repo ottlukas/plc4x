@@ -89,6 +89,10 @@ func (m *S7MessageResponseData) GetTypeName() string {
 	return "S7MessageResponseData"
 }
 
+func (m *S7MessageResponseData) GetTypeName() string {
+    return "S7MessageResponseData"
+}
+
 func (m *S7MessageResponseData) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestCreateObject) GetTypeName() string {
 	return "BACnetConfirmedServiceRequestCreateObject"
 }
 
+func (m *BACnetConfirmedServiceRequestCreateObject) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestCreateObject"
+}
+
 func (m *BACnetConfirmedServiceRequestCreateObject) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

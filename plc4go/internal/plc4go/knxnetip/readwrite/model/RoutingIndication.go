@@ -81,6 +81,10 @@ func (m *RoutingIndication) GetTypeName() string {
 	return "RoutingIndication"
 }
 
+func (m *RoutingIndication) GetTypeName() string {
+    return "RoutingIndication"
+}
+
 func (m *RoutingIndication) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

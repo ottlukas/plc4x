@@ -62,6 +62,10 @@ func (m *S7VarPayloadStatusItem) GetTypeName() string {
 	return "S7VarPayloadStatusItem"
 }
 
+func (m *S7VarPayloadStatusItem) GetTypeName() string {
+    return "S7VarPayloadStatusItem"
+}
+
 func (m *S7VarPayloadStatusItem) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

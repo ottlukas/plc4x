@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestConfirmedPrivateTransfer) GetTypeName() st
 	return "BACnetConfirmedServiceRequestConfirmedPrivateTransfer"
 }
 
+func (m *BACnetConfirmedServiceRequestConfirmedPrivateTransfer) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestConfirmedPrivateTransfer"
+}
+
 func (m *BACnetConfirmedServiceRequestConfirmedPrivateTransfer) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

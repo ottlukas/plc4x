@@ -92,6 +92,10 @@ func (m *S7PayloadUserDataItemCpuFunctionReadSzlResponse) GetTypeName() string {
 	return "S7PayloadUserDataItemCpuFunctionReadSzlResponse"
 }
 
+func (m *S7PayloadUserDataItemCpuFunctionReadSzlResponse) GetTypeName() string {
+    return "S7PayloadUserDataItemCpuFunctionReadSzlResponse"
+}
+
 func (m *S7PayloadUserDataItemCpuFunctionReadSzlResponse) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestReadRange) GetTypeName() string {
 	return "BACnetConfirmedServiceRequestReadRange"
 }
 
+func (m *BACnetConfirmedServiceRequestReadRange) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestReadRange"
+}
+
 func (m *BACnetConfirmedServiceRequestReadRange) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

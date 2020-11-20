@@ -85,6 +85,10 @@ func (m *ConnectionRequestInformationTunnelConnection) GetTypeName() string {
 	return "ConnectionRequestInformationTunnelConnection"
 }
 
+func (m *ConnectionRequestInformationTunnelConnection) GetTypeName() string {
+    return "ConnectionRequestInformationTunnelConnection"
+}
+
 func (m *ConnectionRequestInformationTunnelConnection) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

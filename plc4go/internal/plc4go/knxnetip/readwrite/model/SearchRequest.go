@@ -84,6 +84,10 @@ func (m *SearchRequest) GetTypeName() string {
 	return "SearchRequest"
 }
 
+func (m *SearchRequest) GetTypeName() string {
+    return "SearchRequest"
+}
+
 func (m *SearchRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

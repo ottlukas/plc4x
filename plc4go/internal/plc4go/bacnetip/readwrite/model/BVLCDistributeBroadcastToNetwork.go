@@ -81,6 +81,10 @@ func (m *BVLCDistributeBroadcastToNetwork) GetTypeName() string {
 	return "BVLCDistributeBroadcastToNetwork"
 }
 
+func (m *BVLCDistributeBroadcastToNetwork) GetTypeName() string {
+    return "BVLCDistributeBroadcastToNetwork"
+}
+
 func (m *BVLCDistributeBroadcastToNetwork) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

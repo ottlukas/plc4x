@@ -81,6 +81,10 @@ func (m *BACnetUnconfirmedServiceRequestTimeSynchronization) GetTypeName() strin
 	return "BACnetUnconfirmedServiceRequestTimeSynchronization"
 }
 
+func (m *BACnetUnconfirmedServiceRequestTimeSynchronization) GetTypeName() string {
+    return "BACnetUnconfirmedServiceRequestTimeSynchronization"
+}
+
 func (m *BACnetUnconfirmedServiceRequestTimeSynchronization) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

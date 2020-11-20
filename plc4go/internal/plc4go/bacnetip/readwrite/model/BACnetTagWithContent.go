@@ -73,6 +73,10 @@ func (m *BACnetTagWithContent) GetTypeName() string {
 	return "BACnetTagWithContent"
 }
 
+func (m *BACnetTagWithContent) GetTypeName() string {
+    return "BACnetTagWithContent"
+}
+
 func (m *BACnetTagWithContent) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

@@ -81,6 +81,10 @@ func (m *BVLCReadForeignDeviceTableAck) GetTypeName() string {
 	return "BVLCReadForeignDeviceTableAck"
 }
 
+func (m *BVLCReadForeignDeviceTableAck) GetTypeName() string {
+    return "BVLCReadForeignDeviceTableAck"
+}
+
 func (m *BVLCReadForeignDeviceTableAck) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

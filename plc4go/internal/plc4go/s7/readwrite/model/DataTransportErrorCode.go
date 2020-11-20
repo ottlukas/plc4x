@@ -144,3 +144,21 @@ func (e DataTransportErrorCode) String() string {
 	}
 	return ""
 }
+
+func (e DataTransportErrorCode) String() string {
+    switch e {
+    case DataTransportErrorCode_RESERVED:
+        return "RESERVED"
+    case DataTransportErrorCode_ACCESS_DENIED:
+        return "ACCESS_DENIED"
+    case DataTransportErrorCode_INVALID_ADDRESS:
+        return "INVALID_ADDRESS"
+    case DataTransportErrorCode_DATA_TYPE_NOT_SUPPORTED:
+        return "DATA_TYPE_NOT_SUPPORTED"
+    case DataTransportErrorCode_NOT_FOUND:
+        return "NOT_FOUND"
+    case DataTransportErrorCode_OK:
+        return "OK"
+    }
+    return ""
+}

@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestConfirmedCOVNotificationMultiple) GetTypeN
 	return "BACnetConfirmedServiceRequestConfirmedCOVNotificationMultiple"
 }
 
+func (m *BACnetConfirmedServiceRequestConfirmedCOVNotificationMultiple) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestConfirmedCOVNotificationMultiple"
+}
+
 func (m *BACnetConfirmedServiceRequestConfirmedCOVNotificationMultiple) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

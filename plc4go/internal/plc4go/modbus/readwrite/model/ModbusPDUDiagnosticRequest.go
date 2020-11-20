@@ -94,6 +94,10 @@ func (m *ModbusPDUDiagnosticRequest) GetTypeName() string {
 	return "ModbusPDUDiagnosticRequest"
 }
 
+func (m *ModbusPDUDiagnosticRequest) GetTypeName() string {
+    return "ModbusPDUDiagnosticRequest"
+}
+
 func (m *ModbusPDUDiagnosticRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

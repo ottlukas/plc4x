@@ -84,6 +84,10 @@ func (m *COTPParameterChecksum) GetTypeName() string {
 	return "COTPParameterChecksum"
 }
 
+func (m *COTPParameterChecksum) GetTypeName() string {
+    return "COTPParameterChecksum"
+}
+
 func (m *COTPParameterChecksum) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

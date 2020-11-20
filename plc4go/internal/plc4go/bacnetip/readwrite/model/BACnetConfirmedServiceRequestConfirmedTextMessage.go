@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestConfirmedTextMessage) GetTypeName() string
 	return "BACnetConfirmedServiceRequestConfirmedTextMessage"
 }
 
+func (m *BACnetConfirmedServiceRequestConfirmedTextMessage) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestConfirmedTextMessage"
+}
+
 func (m *BACnetConfirmedServiceRequestConfirmedTextMessage) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

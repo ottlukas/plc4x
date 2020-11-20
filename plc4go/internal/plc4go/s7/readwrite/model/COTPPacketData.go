@@ -88,6 +88,10 @@ func (m *COTPPacketData) GetTypeName() string {
 	return "COTPPacketData"
 }
 
+func (m *COTPPacketData) GetTypeName() string {
+    return "COTPPacketData"
+}
+
 func (m *COTPPacketData) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

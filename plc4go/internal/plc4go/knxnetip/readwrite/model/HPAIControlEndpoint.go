@@ -64,6 +64,10 @@ func (m *HPAIControlEndpoint) GetTypeName() string {
 	return "HPAIControlEndpoint"
 }
 
+func (m *HPAIControlEndpoint) GetTypeName() string {
+    return "HPAIControlEndpoint"
+}
+
 func (m *HPAIControlEndpoint) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

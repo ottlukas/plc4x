@@ -81,6 +81,10 @@ func (m *BVLCWideBroadcastDistributionTable) GetTypeName() string {
 	return "BVLCWideBroadcastDistributionTable"
 }
 
+func (m *BVLCWideBroadcastDistributionTable) GetTypeName() string {
+    return "BVLCWideBroadcastDistributionTable"
+}
+
 func (m *BVLCWideBroadcastDistributionTable) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

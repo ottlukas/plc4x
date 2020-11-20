@@ -92,6 +92,10 @@ func (m *ModbusPDUReadFifoQueueRequest) GetTypeName() string {
 	return "ModbusPDUReadFifoQueueRequest"
 }
 
+func (m *ModbusPDUReadFifoQueueRequest) GetTypeName() string {
+    return "ModbusPDUReadFifoQueueRequest"
+}
+
 func (m *ModbusPDUReadFifoQueueRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

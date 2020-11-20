@@ -85,6 +85,10 @@ func (m *BACnetTagApplicationNull) GetTypeName() string {
 	return "BACnetTagApplicationNull"
 }
 
+func (m *BACnetTagApplicationNull) GetTypeName() string {
+    return "BACnetTagApplicationNull"
+}
+
 func (m *BACnetTagApplicationNull) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

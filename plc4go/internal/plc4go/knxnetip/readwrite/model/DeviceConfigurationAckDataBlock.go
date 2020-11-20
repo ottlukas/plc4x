@@ -64,6 +64,10 @@ func (m *DeviceConfigurationAckDataBlock) GetTypeName() string {
 	return "DeviceConfigurationAckDataBlock"
 }
 
+func (m *DeviceConfigurationAckDataBlock) GetTypeName() string {
+    return "DeviceConfigurationAckDataBlock"
+}
+
 func (m *DeviceConfigurationAckDataBlock) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

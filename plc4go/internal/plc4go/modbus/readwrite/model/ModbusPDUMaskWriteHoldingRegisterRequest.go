@@ -96,6 +96,10 @@ func (m *ModbusPDUMaskWriteHoldingRegisterRequest) GetTypeName() string {
 	return "ModbusPDUMaskWriteHoldingRegisterRequest"
 }
 
+func (m *ModbusPDUMaskWriteHoldingRegisterRequest) GetTypeName() string {
+    return "ModbusPDUMaskWriteHoldingRegisterRequest"
+}
+
 func (m *ModbusPDUMaskWriteHoldingRegisterRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

@@ -88,6 +88,10 @@ func (m *S7ParameterWriteVarRequest) GetTypeName() string {
 	return "S7ParameterWriteVarRequest"
 }
 
+func (m *S7ParameterWriteVarRequest) GetTypeName() string {
+    return "S7ParameterWriteVarRequest"
+}
+
 func (m *S7ParameterWriteVarRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

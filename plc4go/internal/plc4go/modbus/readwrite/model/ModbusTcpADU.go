@@ -68,6 +68,10 @@ func (m *ModbusTcpADU) GetTypeName() string {
 	return "ModbusTcpADU"
 }
 
+func (m *ModbusTcpADU) GetTypeName() string {
+    return "ModbusTcpADU"
+}
+
 func (m *ModbusTcpADU) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

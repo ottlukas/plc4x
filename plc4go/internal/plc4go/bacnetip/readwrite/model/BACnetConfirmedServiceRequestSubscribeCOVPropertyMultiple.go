@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestSubscribeCOVPropertyMultiple) GetTypeName(
 	return "BACnetConfirmedServiceRequestSubscribeCOVPropertyMultiple"
 }
 
+func (m *BACnetConfirmedServiceRequestSubscribeCOVPropertyMultiple) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestSubscribeCOVPropertyMultiple"
+}
+
 func (m *BACnetConfirmedServiceRequestSubscribeCOVPropertyMultiple) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

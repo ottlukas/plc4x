@@ -64,6 +64,10 @@ func (m *DeviceConfigurationRequestDataBlock) GetTypeName() string {
 	return "DeviceConfigurationRequestDataBlock"
 }
 
+func (m *DeviceConfigurationRequestDataBlock) GetTypeName() string {
+    return "DeviceConfigurationRequestDataBlock"
+}
+
 func (m *DeviceConfigurationRequestDataBlock) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

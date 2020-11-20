@@ -88,6 +88,10 @@ func (m *S7ParameterReadVarResponse) GetTypeName() string {
 	return "S7ParameterReadVarResponse"
 }
 
+func (m *S7ParameterReadVarResponse) GetTypeName() string {
+    return "S7ParameterReadVarResponse"
+}
+
 func (m *S7ParameterReadVarResponse) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

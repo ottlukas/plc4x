@@ -62,6 +62,10 @@ func (m *RelativeTimestamp) GetTypeName() string {
 	return "RelativeTimestamp"
 }
 
+func (m *RelativeTimestamp) GetTypeName() string {
+    return "RelativeTimestamp"
+}
+
 func (m *RelativeTimestamp) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

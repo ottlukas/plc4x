@@ -130,3 +130,17 @@ func (e SzlModuleTypeClass) String() string {
 	}
 	return ""
 }
+
+func (e SzlModuleTypeClass) String() string {
+    switch e {
+    case SzlModuleTypeClass_CPU:
+        return "CPU"
+    case SzlModuleTypeClass_IM:
+        return "IM"
+    case SzlModuleTypeClass_FM:
+        return "FM"
+    case SzlModuleTypeClass_CP:
+        return "CP"
+    }
+    return ""
+}

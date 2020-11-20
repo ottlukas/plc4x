@@ -81,6 +81,10 @@ func (m *BACnetErrorGetEventInformation) GetTypeName() string {
 	return "BACnetErrorGetEventInformation"
 }
 
+func (m *BACnetErrorGetEventInformation) GetTypeName() string {
+    return "BACnetErrorGetEventInformation"
+}
+
 func (m *BACnetErrorGetEventInformation) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

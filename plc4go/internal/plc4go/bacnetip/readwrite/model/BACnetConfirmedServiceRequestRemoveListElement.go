@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestRemoveListElement) GetTypeName() string {
 	return "BACnetConfirmedServiceRequestRemoveListElement"
 }
 
+func (m *BACnetConfirmedServiceRequestRemoveListElement) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestRemoveListElement"
+}
+
 func (m *BACnetConfirmedServiceRequestRemoveListElement) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

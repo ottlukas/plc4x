@@ -81,6 +81,10 @@ func (m *BACnetServiceAckReadRange) GetTypeName() string {
 	return "BACnetServiceAckReadRange"
 }
 
+func (m *BACnetServiceAckReadRange) GetTypeName() string {
+    return "BACnetServiceAckReadRange"
+}
+
 func (m *BACnetServiceAckReadRange) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

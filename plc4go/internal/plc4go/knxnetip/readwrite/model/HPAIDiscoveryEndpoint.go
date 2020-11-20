@@ -64,6 +64,10 @@ func (m *HPAIDiscoveryEndpoint) GetTypeName() string {
 	return "HPAIDiscoveryEndpoint"
 }
 
+func (m *HPAIDiscoveryEndpoint) GetTypeName() string {
+    return "HPAIDiscoveryEndpoint"
+}
+
 func (m *HPAIDiscoveryEndpoint) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

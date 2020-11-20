@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceACKVTOpen) GetTypeName() string {
 	return "BACnetConfirmedServiceACKVTOpen"
 }
 
+func (m *BACnetConfirmedServiceACKVTOpen) GetTypeName() string {
+    return "BACnetConfirmedServiceACKVTOpen"
+}
+
 func (m *BACnetConfirmedServiceACKVTOpen) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

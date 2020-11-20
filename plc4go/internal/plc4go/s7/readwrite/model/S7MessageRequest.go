@@ -84,6 +84,10 @@ func (m *S7MessageRequest) GetTypeName() string {
 	return "S7MessageRequest"
 }
 
+func (m *S7MessageRequest) GetTypeName() string {
+    return "S7MessageRequest"
+}
+
 func (m *S7MessageRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

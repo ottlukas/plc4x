@@ -86,6 +86,10 @@ func (m *DeviceConfigurationRequest) GetTypeName() string {
 	return "DeviceConfigurationRequest"
 }
 
+func (m *DeviceConfigurationRequest) GetTypeName() string {
+    return "DeviceConfigurationRequest"
+}
+
 func (m *DeviceConfigurationRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

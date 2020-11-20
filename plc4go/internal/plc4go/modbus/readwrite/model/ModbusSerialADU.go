@@ -66,6 +66,10 @@ func (m *ModbusSerialADU) GetTypeName() string {
 	return "ModbusSerialADU"
 }
 
+func (m *ModbusSerialADU) GetTypeName() string {
+    return "ModbusSerialADU"
+}
+
 func (m *ModbusSerialADU) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

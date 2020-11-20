@@ -81,6 +81,10 @@ func (m *ConnectionResponseDataBlockDeviceManagement) GetTypeName() string {
 	return "ConnectionResponseDataBlockDeviceManagement"
 }
 
+func (m *ConnectionResponseDataBlockDeviceManagement) GetTypeName() string {
+    return "ConnectionResponseDataBlockDeviceManagement"
+}
+
 func (m *ConnectionResponseDataBlockDeviceManagement) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

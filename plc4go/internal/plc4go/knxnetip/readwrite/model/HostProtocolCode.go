@@ -116,3 +116,13 @@ func (e HostProtocolCode) String() string {
 	}
 	return ""
 }
+
+func (e HostProtocolCode) String() string {
+    switch e {
+    case HostProtocolCode_IPV4_UDP:
+        return "IPV4_UDP"
+    case HostProtocolCode_IPV4_TCP:
+        return "IPV4_TCP"
+    }
+    return ""
+}

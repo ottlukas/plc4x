@@ -81,6 +81,10 @@ func (m *BVLCRegisterForeignDevice) GetTypeName() string {
 	return "BVLCRegisterForeignDevice"
 }
 
+func (m *BVLCRegisterForeignDevice) GetTypeName() string {
+    return "BVLCRegisterForeignDevice"
+}
+
 func (m *BVLCRegisterForeignDevice) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

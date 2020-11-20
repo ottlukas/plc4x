@@ -81,6 +81,10 @@ func (m *BACnetErrorGetEnrollmentSummary) GetTypeName() string {
 	return "BACnetErrorGetEnrollmentSummary"
 }
 
+func (m *BACnetErrorGetEnrollmentSummary) GetTypeName() string {
+    return "BACnetErrorGetEnrollmentSummary"
+}
+
 func (m *BACnetErrorGetEnrollmentSummary) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

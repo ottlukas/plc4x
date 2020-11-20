@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestRemovedReadPropertyConditional) GetTypeNam
 	return "BACnetConfirmedServiceRequestRemovedReadPropertyConditional"
 }
 
+func (m *BACnetConfirmedServiceRequestRemovedReadPropertyConditional) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestRemovedReadPropertyConditional"
+}
+
 func (m *BACnetConfirmedServiceRequestRemovedReadPropertyConditional) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

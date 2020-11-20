@@ -63,6 +63,10 @@ func (m *DIBSuppSvcFamilies) GetTypeName() string {
 	return "DIBSuppSvcFamilies"
 }
 
+func (m *DIBSuppSvcFamilies) GetTypeName() string {
+    return "DIBSuppSvcFamilies"
+}
+
 func (m *DIBSuppSvcFamilies) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

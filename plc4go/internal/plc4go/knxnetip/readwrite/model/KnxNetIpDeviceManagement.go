@@ -84,6 +84,10 @@ func (m *KnxNetIpDeviceManagement) GetTypeName() string {
 	return "KnxNetIpDeviceManagement"
 }
 
+func (m *KnxNetIpDeviceManagement) GetTypeName() string {
+    return "KnxNetIpDeviceManagement"
+}
+
 func (m *KnxNetIpDeviceManagement) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

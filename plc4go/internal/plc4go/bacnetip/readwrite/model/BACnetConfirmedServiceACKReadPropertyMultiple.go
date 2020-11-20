@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceACKReadPropertyMultiple) GetTypeName() string {
 	return "BACnetConfirmedServiceACKReadPropertyMultiple"
 }
 
+func (m *BACnetConfirmedServiceACKReadPropertyMultiple) GetTypeName() string {
+    return "BACnetConfirmedServiceACKReadPropertyMultiple"
+}
+
 func (m *BACnetConfirmedServiceACKReadPropertyMultiple) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

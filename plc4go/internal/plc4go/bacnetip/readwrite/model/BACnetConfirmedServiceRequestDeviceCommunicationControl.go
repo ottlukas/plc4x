@@ -81,6 +81,10 @@ func (m *BACnetConfirmedServiceRequestDeviceCommunicationControl) GetTypeName() 
 	return "BACnetConfirmedServiceRequestDeviceCommunicationControl"
 }
 
+func (m *BACnetConfirmedServiceRequestDeviceCommunicationControl) GetTypeName() string {
+    return "BACnetConfirmedServiceRequestDeviceCommunicationControl"
+}
+
 func (m *BACnetConfirmedServiceRequestDeviceCommunicationControl) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

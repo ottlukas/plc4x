@@ -81,6 +81,10 @@ func (m *BACnetUnconfirmedServiceRequestUnconfirmedCOVNotification) GetTypeName(
 	return "BACnetUnconfirmedServiceRequestUnconfirmedCOVNotification"
 }
 
+func (m *BACnetUnconfirmedServiceRequestUnconfirmedCOVNotification) GetTypeName() string {
+    return "BACnetUnconfirmedServiceRequestUnconfirmedCOVNotification"
+}
+
 func (m *BACnetUnconfirmedServiceRequestUnconfirmedCOVNotification) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

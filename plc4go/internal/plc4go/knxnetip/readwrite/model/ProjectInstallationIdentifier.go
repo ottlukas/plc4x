@@ -63,6 +63,10 @@ func (m *ProjectInstallationIdentifier) GetTypeName() string {
 	return "ProjectInstallationIdentifier"
 }
 
+func (m *ProjectInstallationIdentifier) GetTypeName() string {
+    return "ProjectInstallationIdentifier"
+}
+
 func (m *ProjectInstallationIdentifier) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

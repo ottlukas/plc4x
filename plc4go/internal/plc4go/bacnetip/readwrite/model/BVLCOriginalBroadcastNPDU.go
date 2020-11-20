@@ -84,6 +84,10 @@ func (m *BVLCOriginalBroadcastNPDU) GetTypeName() string {
 	return "BVLCOriginalBroadcastNPDU"
 }
 
+func (m *BVLCOriginalBroadcastNPDU) GetTypeName() string {
+    return "BVLCOriginalBroadcastNPDU"
+}
+
 func (m *BVLCOriginalBroadcastNPDU) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

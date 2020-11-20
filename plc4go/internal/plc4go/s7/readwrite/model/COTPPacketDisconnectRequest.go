@@ -90,6 +90,10 @@ func (m *COTPPacketDisconnectRequest) GetTypeName() string {
 	return "COTPPacketDisconnectRequest"
 }
 
+func (m *COTPPacketDisconnectRequest) GetTypeName() string {
+    return "COTPPacketDisconnectRequest"
+}
+
 func (m *COTPPacketDisconnectRequest) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

@@ -85,6 +85,10 @@ func (m *NLMIAmRouterToNetwork) GetTypeName() string {
 	return "NLMIAmRouterToNetwork"
 }
 
+func (m *NLMIAmRouterToNetwork) GetTypeName() string {
+    return "NLMIAmRouterToNetwork"
+}
+
 func (m *NLMIAmRouterToNetwork) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 

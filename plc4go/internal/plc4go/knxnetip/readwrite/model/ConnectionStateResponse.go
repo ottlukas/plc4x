@@ -86,6 +86,10 @@ func (m *ConnectionStateResponse) GetTypeName() string {
 	return "ConnectionStateResponse"
 }
 
+func (m *ConnectionStateResponse) GetTypeName() string {
+    return "ConnectionStateResponse"
+}
+
 func (m *ConnectionStateResponse) LengthInBits() uint16 {
 	lengthInBits := uint16(0)
 
