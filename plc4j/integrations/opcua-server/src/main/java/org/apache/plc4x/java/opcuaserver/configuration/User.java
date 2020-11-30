@@ -28,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Base64;
 
+import java.util.Base64;
+
 public class User {
 
     @JsonProperty
