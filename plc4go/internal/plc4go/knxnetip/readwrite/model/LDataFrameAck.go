@@ -25,13 +25,13 @@ import (
 )
 
 // The data-structure of this message
-type CEMIRawInd struct {
-    Parent *CEMI
-    ICEMIRawInd
+type LDataFrameAck struct {
+    Parent *LDataFrame
+    ILDataFrameAck
 }
 
 // The corresponding interface
-type ICEMIRawInd interface {
+type ILDataFrameAck interface {
     LengthInBytes() uint16
     LengthInBits() uint16
     Serialize(io utils.WriteBuffer) error
@@ -41,66 +41,78 @@ type ICEMIRawInd interface {
 ///////////////////////////////////////////////////////////
 // Accessors for discriminator values.
 ///////////////////////////////////////////////////////////
-func (m *CEMIRawInd) MessageCode() uint8 {
-    return 0x2D
+func (m *LDataFrameAck) NotAckFrame() bool {
+    return false
+}
+
+func (m *LDataFrameAck) ExtendedFrame() bool {
+    return false
+}
+
+func (m *LDataFrameAck) Polling() bool {
+    return false
 }
 
 
-func (m *CEMIRawInd) InitializeParent(parent *CEMI) {
+func (m *LDataFrameAck) InitializeParent(parent *LDataFrame, repeated bool, priority CEMIPriority, acknowledgeRequested bool, errorFlag bool) {
+    m.Parent.Repeated = repeated
+    m.Parent.Priority = priority
+    m.Parent.AcknowledgeRequested = acknowledgeRequested
+    m.Parent.ErrorFlag = errorFlag
 }
 
-func NewCEMIRawInd() *CEMI {
-    child := &CEMIRawInd{
-        Parent: NewCEMI(),
+func NewLDataFrameAck(repeated bool, priority CEMIPriority, acknowledgeRequested bool, errorFlag bool) *LDataFrame {
+    child := &LDataFrameAck{
+        Parent: NewLDataFrame(repeated, priority, acknowledgeRequested, errorFlag),
     }
     child.Parent.Child = child
     return child.Parent
 }
 
-func CastCEMIRawInd(structType interface{}) *CEMIRawInd {
-    castFunc := func(typ interface{}) *CEMIRawInd {
-        if casted, ok := typ.(CEMIRawInd); ok {
+func CastLDataFrameAck(structType interface{}) *LDataFrameAck {
+    castFunc := func(typ interface{}) *LDataFrameAck {
+        if casted, ok := typ.(LDataFrameAck); ok {
             return &casted
         }
-        if casted, ok := typ.(*CEMIRawInd); ok {
+        if casted, ok := typ.(*LDataFrameAck); ok {
             return casted
         }
-        if casted, ok := typ.(CEMI); ok {
-            return CastCEMIRawInd(casted.Child)
+        if casted, ok := typ.(LDataFrame); ok {
+            return CastLDataFrameAck(casted.Child)
         }
-        if casted, ok := typ.(*CEMI); ok {
-            return CastCEMIRawInd(casted.Child)
+        if casted, ok := typ.(*LDataFrame); ok {
+            return CastLDataFrameAck(casted.Child)
         }
         return nil
     }
     return castFunc(structType)
 }
 
-func (m *CEMIRawInd) GetTypeName() string {
-    return "CEMIRawInd"
+func (m *LDataFrameAck) GetTypeName() string {
+    return "LDataFrameAck"
 }
 
-func (m *CEMIRawInd) LengthInBits() uint16 {
+func (m *LDataFrameAck) LengthInBits() uint16 {
     lengthInBits := uint16(0)
 
     return lengthInBits
 }
 
-func (m *CEMIRawInd) LengthInBytes() uint16 {
+func (m *LDataFrameAck) LengthInBytes() uint16 {
     return m.LengthInBits() / 8
 }
 
-func CEMIRawIndParse(io *utils.ReadBuffer) (*CEMI, error) {
+func LDataFrameAckParse(io *utils.ReadBuffer) (*LDataFrame, error) {
 
     // Create a partially initialized instance
-    _child := &CEMIRawInd{
-        Parent: &CEMI{},
+    _child := &LDataFrameAck{
+        Parent: &LDataFrame{},
     }
     _child.Parent.Child = _child
     return _child.Parent, nil
 }
 
-func (m *CEMIRawInd) Serialize(io utils.WriteBuffer) error {
+func (m *LDataFrameAck) Serialize(io utils.WriteBuffer) error {
     ser := func() error {
 
         return nil
@@ -108,7 +120,7 @@ func (m *CEMIRawInd) Serialize(io utils.WriteBuffer) error {
     return m.Parent.SerializeParent(io, m, ser)
 }
 
-func (m *CEMIRawInd) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+func (m *LDataFrameAck) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
     var token xml.Token
     var err error
     token = start
@@ -129,7 +141,7 @@ func (m *CEMIRawInd) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
     }
 }
 
-func (m *CEMIRawInd) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+func (m *LDataFrameAck) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
     return nil
 }
 
