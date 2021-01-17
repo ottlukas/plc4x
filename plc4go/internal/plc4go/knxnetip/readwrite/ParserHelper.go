@@ -16,7 +16,7 @@
 // specific language governing permissions and limitations
 // under the License.
 //
-package readwrite
+package model
 
 import (
 	"github.com/apache/plc4x/plc4go/internal/plc4go/knxnetip/readwrite/model"
