@@ -70,7 +70,7 @@ func main() {
 	// Do something with the response
 	for _, fieldName := range rrr.Response.GetFieldNames() {
 		if rrr.Response.GetResponseCode(fieldName) != model.PlcResponseCode_OK {
-			fmt.Printf("error an non-ok return code for field %s: %s °C\n", fieldName, rrr.Response.GetResponseCode(fieldName).GetName())
+			fmt.Printf("error an non-ok return code for field %s: %s\n", fieldName, rrr.Response.GetResponseCode(fieldName).GetName())
 			continue
 		}
 
