@@ -319,7 +319,8 @@
           </execution>
 
           <!-- Convert generated test report into xunit format and save as file -->
-          <execution>
+          <!-- TODO: Seems to require some sort of executable -->
+          <!--execution>
             <id>makeXUnitReport</id>
             <phase>test</phase>
             <goals>
@@ -341,7 +342,7 @@
                 <package>target${file.separator}surefire-reports${file.separator}xuint.xml</package>
               </packages>
             </configuration>
-          </execution>
+          </execution-->
 
           <execution>
             <id>run-go-vet</id>
