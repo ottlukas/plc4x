@@ -53,6 +53,7 @@ ${helper.getIncludesDirectory()?replace(".", "/")}/${helper.camelCaseToSnakeCase
     </#list>
 </#if>
 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
