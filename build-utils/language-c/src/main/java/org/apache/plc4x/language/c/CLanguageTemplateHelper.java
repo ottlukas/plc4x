@@ -576,6 +576,7 @@ public class CLanguageTemplateHelper extends BaseFreemarkerLanguageTemplateHelpe
 
     public String toVariableParseExpression(TypeDefinition baseType, Field field, Term term, Argument[] parserArguments) {
         VariableLiteral vl = (VariableLiteral) term;
+
         if("CAST".equals(vl.getName())) {
 
             if((vl.getArgs() == null) || (vl.getArgs().size() != 2)) {
