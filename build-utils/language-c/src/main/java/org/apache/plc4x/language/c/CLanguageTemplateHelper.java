@@ -179,7 +179,6 @@ public class CLanguageTemplateHelper extends BaseFreemarkerLanguageTemplateHelpe
      */
     @Override
     public String getLanguageTypeNameForTypeReference(TypeReference typeReference) {
-        System.out.println("Type Reference " + typeReference.getClass());
         if (typeReference instanceof SimpleTypeReference) {
             SimpleTypeReference simpleTypeReference = (SimpleTypeReference) typeReference;
             switch (simpleTypeReference.getBaseType()) {
@@ -576,7 +575,6 @@ public class CLanguageTemplateHelper extends BaseFreemarkerLanguageTemplateHelpe
 
     public String toVariableParseExpression(TypeDefinition baseType, Field field, Term term, Argument[] parserArguments) {
         VariableLiteral vl = (VariableLiteral) term;
-
         if("CAST".equals(vl.getName())) {
 
             if((vl.getArgs() == null) || (vl.getArgs().size() != 2)) {
