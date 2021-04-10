@@ -21,10 +21,10 @@ package model
 import (
 	"encoding/hex"
 	"encoding/xml"
-	"fmt"
 	"github.com/apache/plc4x/plc4go/internal/plc4go/spi/utils"
 	"github.com/pkg/errors"
 	"io"
+	"strconv"
 	"strings"
 )
 
@@ -153,7 +153,7 @@ func BACnetUnconfirmedServiceRequestIAmParse(io *utils.ReadBuffer) (*BACnetUncon
 		return nil, errors.Wrap(_objectIdentifierHeaderErr, "Error parsing 'objectIdentifierHeader' field")
 	}
 	if objectIdentifierHeader != BACnetUnconfirmedServiceRequestIAm_OBJECTIDENTIFIERHEADER {
-		return nil, errors.New("Expected constant value " + fmt.Sprintf("%d", BACnetUnconfirmedServiceRequestIAm_OBJECTIDENTIFIERHEADER) + " but got " + fmt.Sprintf("%d", objectIdentifierHeader))
+		return nil, errors.New("Expected constant value " + strconv.Itoa(int(BACnetUnconfirmedServiceRequestIAm_OBJECTIDENTIFIERHEADER)) + " but got " + strconv.Itoa(int(objectIdentifierHeader)))
 	}
 
 	// Simple Field (objectType)
@@ -174,7 +174,7 @@ func BACnetUnconfirmedServiceRequestIAmParse(io *utils.ReadBuffer) (*BACnetUncon
 		return nil, errors.Wrap(_maximumApduLengthAcceptedHeaderErr, "Error parsing 'maximumApduLengthAcceptedHeader' field")
 	}
 	if maximumApduLengthAcceptedHeader != BACnetUnconfirmedServiceRequestIAm_MAXIMUMAPDULENGTHACCEPTEDHEADER {
-		return nil, errors.New("Expected constant value " + fmt.Sprintf("%d", BACnetUnconfirmedServiceRequestIAm_MAXIMUMAPDULENGTHACCEPTEDHEADER) + " but got " + fmt.Sprintf("%d", maximumApduLengthAcceptedHeader))
+		return nil, errors.New("Expected constant value " + strconv.Itoa(int(BACnetUnconfirmedServiceRequestIAm_MAXIMUMAPDULENGTHACCEPTEDHEADER)) + " but got " + strconv.Itoa(int(maximumApduLengthAcceptedHeader)))
 	}
 
 	// Simple Field (maximumApduLengthAcceptedLength)
@@ -200,7 +200,7 @@ func BACnetUnconfirmedServiceRequestIAmParse(io *utils.ReadBuffer) (*BACnetUncon
 		return nil, errors.Wrap(_segmentationSupportedHeaderErr, "Error parsing 'segmentationSupportedHeader' field")
 	}
 	if segmentationSupportedHeader != BACnetUnconfirmedServiceRequestIAm_SEGMENTATIONSUPPORTEDHEADER {
-		return nil, errors.New("Expected constant value " + fmt.Sprintf("%d", BACnetUnconfirmedServiceRequestIAm_SEGMENTATIONSUPPORTEDHEADER) + " but got " + fmt.Sprintf("%d", segmentationSupportedHeader))
+		return nil, errors.New("Expected constant value " + strconv.Itoa(int(BACnetUnconfirmedServiceRequestIAm_SEGMENTATIONSUPPORTEDHEADER)) + " but got " + strconv.Itoa(int(segmentationSupportedHeader)))
 	}
 
 	// Simple Field (segmentationSupported)
@@ -215,7 +215,7 @@ func BACnetUnconfirmedServiceRequestIAmParse(io *utils.ReadBuffer) (*BACnetUncon
 		return nil, errors.Wrap(_vendorIdHeaderErr, "Error parsing 'vendorIdHeader' field")
 	}
 	if vendorIdHeader != BACnetUnconfirmedServiceRequestIAm_VENDORIDHEADER {
-		return nil, errors.New("Expected constant value " + fmt.Sprintf("%d", BACnetUnconfirmedServiceRequestIAm_VENDORIDHEADER) + " but got " + fmt.Sprintf("%d", vendorIdHeader))
+		return nil, errors.New("Expected constant value " + strconv.Itoa(int(BACnetUnconfirmedServiceRequestIAm_VENDORIDHEADER)) + " but got " + strconv.Itoa(int(vendorIdHeader)))
 	}
 
 	// Simple Field (vendorId)

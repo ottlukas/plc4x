@@ -20,11 +20,11 @@ package model
 
 import (
 	"encoding/xml"
-	"fmt"
 	"github.com/apache/plc4x/plc4go/internal/plc4go/spi/utils"
 	"github.com/pkg/errors"
 	"io"
 	"reflect"
+	"strconv"
 	"strings"
 )
 
@@ -108,8 +108,7 @@ func (m *KnxNetIpMessage) LengthInBytes() uint16 {
 func KnxNetIpMessageParse(io *utils.ReadBuffer) (*KnxNetIpMessage, error) {
 
 	// Implicit Field (headerLength) (Used for parsing, but it's value is not stored as it's implicitly given by the objects content)
-	headerLength, _headerLengthErr := io.ReadUint8(8)
-	_ = headerLength
+	_, _headerLengthErr := io.ReadUint8(8)
 	if _headerLengthErr != nil {
 		return nil, errors.Wrap(_headerLengthErr, "Error parsing 'headerLength' field")
 	}
@@ -120,7 +119,7 @@ func KnxNetIpMessageParse(io *utils.ReadBuffer) (*KnxNetIpMessage, error) {
 		return nil, errors.Wrap(_protocolVersionErr, "Error parsing 'protocolVersion' field")
 	}
 	if protocolVersion != KnxNetIpMessage_PROTOCOLVERSION {
-		return nil, errors.New("Expected constant value " + fmt.Sprintf("%d", KnxNetIpMessage_PROTOCOLVERSION) + " but got " + fmt.Sprintf("%d", protocolVersion))
+		return nil, errors.New("Expected constant value " + strconv.Itoa(int(KnxNetIpMessage_PROTOCOLVERSION)) + " but got " + strconv.Itoa(int(protocolVersion)))
 	}
 
 	// Discriminator Field (msgType) (Used as input to a switch field)
@@ -131,7 +130,6 @@ func KnxNetIpMessageParse(io *utils.ReadBuffer) (*KnxNetIpMessage, error) {
 
 	// Implicit Field (totalLength) (Used for parsing, but it's value is not stored as it's implicitly given by the objects content)
 	totalLength, _totalLengthErr := io.ReadUint16(16)
-	_ = totalLength
 	if _totalLengthErr != nil {
 		return nil, errors.Wrap(_totalLengthErr, "Error parsing 'totalLength' field")
 	}
@@ -140,37 +138,37 @@ func KnxNetIpMessageParse(io *utils.ReadBuffer) (*KnxNetIpMessage, error) {
 	var _parent *KnxNetIpMessage
 	var typeSwitchError error
 	switch {
-	case msgType == 0x0201: // SearchRequest
+	case msgType == 0x0201:
 		_parent, typeSwitchError = SearchRequestParse(io)
-	case msgType == 0x0202: // SearchResponse
+	case msgType == 0x0202:
 		_parent, typeSwitchError = SearchResponseParse(io)
-	case msgType == 0x0203: // DescriptionRequest
+	case msgType == 0x0203:
 		_parent, typeSwitchError = DescriptionRequestParse(io)
-	case msgType == 0x0204: // DescriptionResponse
+	case msgType == 0x0204:
 		_parent, typeSwitchError = DescriptionResponseParse(io)
-	case msgType == 0x0205: // ConnectionRequest
+	case msgType == 0x0205:
 		_parent, typeSwitchError = ConnectionRequestParse(io)
-	case msgType == 0x0206: // ConnectionResponse
+	case msgType == 0x0206:
 		_parent, typeSwitchError = ConnectionResponseParse(io)
-	case msgType == 0x0207: // ConnectionStateRequest
+	case msgType == 0x0207:
 		_parent, typeSwitchError = ConnectionStateRequestParse(io)
-	case msgType == 0x0208: // ConnectionStateResponse
+	case msgType == 0x0208:
 		_parent, typeSwitchError = ConnectionStateResponseParse(io)
-	case msgType == 0x0209: // DisconnectRequest
+	case msgType == 0x0209:
 		_parent, typeSwitchError = DisconnectRequestParse(io)
-	case msgType == 0x020A: // DisconnectResponse
+	case msgType == 0x020A:
 		_parent, typeSwitchError = DisconnectResponseParse(io)
-	case msgType == 0x020B: // UnknownMessage
+	case msgType == 0x020B:
 		_parent, typeSwitchError = UnknownMessageParse(io, totalLength)
-	case msgType == 0x0310: // DeviceConfigurationRequest
+	case msgType == 0x0310:
 		_parent, typeSwitchError = DeviceConfigurationRequestParse(io, totalLength)
-	case msgType == 0x0311: // DeviceConfigurationAck
+	case msgType == 0x0311:
 		_parent, typeSwitchError = DeviceConfigurationAckParse(io)
-	case msgType == 0x0420: // TunnelingRequest
+	case msgType == 0x0420:
 		_parent, typeSwitchError = TunnelingRequestParse(io, totalLength)
-	case msgType == 0x0421: // TunnelingResponse
+	case msgType == 0x0421:
 		_parent, typeSwitchError = TunnelingResponseParse(io)
-	case msgType == 0x0530: // RoutingIndication
+	case msgType == 0x0530:
 		_parent, typeSwitchError = RoutingIndicationParse(io)
 	}
 	if typeSwitchError != nil {
@@ -204,7 +202,6 @@ func (m *KnxNetIpMessage) SerializeParent(io utils.WriteBuffer, child IKnxNetIpM
 	// Discriminator Field (msgType) (Used as input to a switch field)
 	msgType := uint16(child.MsgType())
 	_msgTypeErr := io.WriteUint16(16, (msgType))
-
 	if _msgTypeErr != nil {
 		return errors.Wrap(_msgTypeErr, "Error serializing 'msgType' field")
 	}

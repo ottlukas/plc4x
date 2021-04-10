@@ -23,7 +23,7 @@
   <parent>
     <groupId>org.apache.plc4x.sandbox</groupId>
     <artifactId>plc4x-sandbox</artifactId>
-    <version>0.9.0-SNAPSHOT</version>
+    <version>0.8.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>test-java-df1-driver</artifactId>
@@ -57,18 +57,18 @@
     <dependency>
       <groupId>org.apache.plc4x</groupId>
       <artifactId>plc4j-api</artifactId>
-      <version>0.9.0-SNAPSHOT</version>
+      <version>0.8.0-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.plc4x</groupId>
       <artifactId>plc4j-transport-serial</artifactId>
-      <version>0.9.0-SNAPSHOT</version>
+      <version>0.8.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.plc4x</groupId>
       <artifactId>plc4j-transport-tcp</artifactId>
-      <version>0.9.0-SNAPSHOT</version>
+      <version>0.8.0-SNAPSHOT</version>
       <optional>true</optional>
     </dependency>
 
@@ -87,6 +87,14 @@
       <version>6.0.0</version>
       <scope>provided</scope>
     </dependency-->
+
+    <dependency>
+      <groupId>org.apache.plc4x</groupId>
+      <artifactId>plc4x-build-utils-language-java</artifactId>
+      <version>0.8.0-SNAPSHOT</version>
+      <!-- Scope is 'provided' as this way it's not shipped with the driver -->
+      <scope>provided</scope>
+    </dependency>
 
   <!--  &lt;!&ndash; https://mvnrepository.com/artifact/org.rxtx/rxtx &ndash;&gt;
     <dependency>
@@ -116,8 +124,15 @@
 
     <dependency>
       <groupId>org.apache.plc4x</groupId>
+      <artifactId>plc4x-protocols-df1</artifactId>
+      <version>0.8.0-SNAPSHOT</version>
+      <!-- Scope is 'provided' as this way it's not shipped with the driver -->
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.plc4x</groupId>
       <artifactId>plc4j-utils-test-utils</artifactId>
-      <version>0.9.0-SNAPSHOT</version>
+      <version>0.8.0-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -143,32 +158,7 @@
     </dependency>
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-test-junit5</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.plc4x</groupId>
-      <artifactId>plc4x-build-utils-language-java</artifactId>
-      <version>0.9.0-SNAPSHOT</version>
-      <!-- Scope is 'provided' as this way it's not shipped with the driver -->
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.plc4x</groupId>
-      <artifactId>plc4x-protocols-df1</artifactId>
-      <version>0.9.0-SNAPSHOT</version>
-      <!-- Scope is 'provided' as this way it's not shipped with the driver -->
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.plc4x</groupId>
-      <artifactId>plc4x-protocols-df1</artifactId>
-      <version>0.9.0-SNAPSHOT</version>
-      <classifier>tests</classifier>
-      <type>test-jar</type>
+      <artifactId>groovy-test-junit5</artifactId>      
       <scope>test</scope>
     </dependency>
   </dependencies>

@@ -20,11 +20,11 @@ package model
 
 import (
 	"encoding/xml"
-	"fmt"
 	"github.com/apache/plc4x/plc4go/internal/plc4go/spi/utils"
 	"github.com/pkg/errors"
 	"io"
 	"reflect"
+	"strconv"
 	"strings"
 )
 
@@ -110,7 +110,7 @@ func BVLCParse(io *utils.ReadBuffer) (*BVLC, error) {
 		return nil, errors.Wrap(_bacnetTypeErr, "Error parsing 'bacnetType' field")
 	}
 	if bacnetType != BVLC_BACNETTYPE {
-		return nil, errors.New("Expected constant value " + fmt.Sprintf("%d", BVLC_BACNETTYPE) + " but got " + fmt.Sprintf("%d", bacnetType))
+		return nil, errors.New("Expected constant value " + strconv.Itoa(int(BVLC_BACNETTYPE)) + " but got " + strconv.Itoa(int(bacnetType)))
 	}
 
 	// Discriminator Field (bvlcFunction) (Used as input to a switch field)
@@ -121,7 +121,6 @@ func BVLCParse(io *utils.ReadBuffer) (*BVLC, error) {
 
 	// Implicit Field (bvlcLength) (Used for parsing, but it's value is not stored as it's implicitly given by the objects content)
 	bvlcLength, _bvlcLengthErr := io.ReadUint16(16)
-	_ = bvlcLength
 	if _bvlcLengthErr != nil {
 		return nil, errors.Wrap(_bvlcLengthErr, "Error parsing 'bvlcLength' field")
 	}
@@ -130,31 +129,31 @@ func BVLCParse(io *utils.ReadBuffer) (*BVLC, error) {
 	var _parent *BVLC
 	var typeSwitchError error
 	switch {
-	case bvlcFunction == 0x00: // BVLCResult
+	case bvlcFunction == 0x00:
 		_parent, typeSwitchError = BVLCResultParse(io)
-	case bvlcFunction == 0x01: // BVLCWideBroadcastDistributionTable
+	case bvlcFunction == 0x01:
 		_parent, typeSwitchError = BVLCWideBroadcastDistributionTableParse(io)
-	case bvlcFunction == 0x02: // BVLCReadBroadcastDistributionTable
+	case bvlcFunction == 0x02:
 		_parent, typeSwitchError = BVLCReadBroadcastDistributionTableParse(io)
-	case bvlcFunction == 0x03: // BVLCReadBroadcastDistributionTableAck
+	case bvlcFunction == 0x03:
 		_parent, typeSwitchError = BVLCReadBroadcastDistributionTableAckParse(io)
-	case bvlcFunction == 0x04: // BVLCForwardedNPDU
+	case bvlcFunction == 0x04:
 		_parent, typeSwitchError = BVLCForwardedNPDUParse(io, bvlcLength)
-	case bvlcFunction == 0x05: // BVLCRegisterForeignDevice
+	case bvlcFunction == 0x05:
 		_parent, typeSwitchError = BVLCRegisterForeignDeviceParse(io)
-	case bvlcFunction == 0x06: // BVLCReadForeignDeviceTable
+	case bvlcFunction == 0x06:
 		_parent, typeSwitchError = BVLCReadForeignDeviceTableParse(io)
-	case bvlcFunction == 0x07: // BVLCReadForeignDeviceTableAck
+	case bvlcFunction == 0x07:
 		_parent, typeSwitchError = BVLCReadForeignDeviceTableAckParse(io)
-	case bvlcFunction == 0x08: // BVLCDeleteForeignDeviceTableEntry
+	case bvlcFunction == 0x08:
 		_parent, typeSwitchError = BVLCDeleteForeignDeviceTableEntryParse(io)
-	case bvlcFunction == 0x09: // BVLCDistributeBroadcastToNetwork
+	case bvlcFunction == 0x09:
 		_parent, typeSwitchError = BVLCDistributeBroadcastToNetworkParse(io)
-	case bvlcFunction == 0x0A: // BVLCOriginalUnicastNPDU
+	case bvlcFunction == 0x0A:
 		_parent, typeSwitchError = BVLCOriginalUnicastNPDUParse(io, bvlcLength)
-	case bvlcFunction == 0x0B: // BVLCOriginalBroadcastNPDU
+	case bvlcFunction == 0x0B:
 		_parent, typeSwitchError = BVLCOriginalBroadcastNPDUParse(io, bvlcLength)
-	case bvlcFunction == 0x0C: // BVLCSecureBVLL
+	case bvlcFunction == 0x0C:
 		_parent, typeSwitchError = BVLCSecureBVLLParse(io)
 	}
 	if typeSwitchError != nil {
@@ -181,7 +180,6 @@ func (m *BVLC) SerializeParent(io utils.WriteBuffer, child IBVLC, serializeChild
 	// Discriminator Field (bvlcFunction) (Used as input to a switch field)
 	bvlcFunction := uint8(child.BvlcFunction())
 	_bvlcFunctionErr := io.WriteUint8(8, (bvlcFunction))
-
 	if _bvlcFunctionErr != nil {
 		return errors.Wrap(_bvlcFunctionErr, "Error serializing 'bvlcFunction' field")
 	}

@@ -21,21 +21,11 @@ package org.apache.plc4x.java.simulated.connection;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.plc4x.java.api.model.PlcSubscriptionField;
 import org.apache.plc4x.java.api.model.PlcSubscriptionHandle;
-import org.apache.plc4x.java.api.value.*;
-import org.apache.plc4x.java.simulated.field.SimulatedField;
-import org.apache.plc4x.java.simulated.readwrite.io.DataItemIO;
-import org.apache.plc4x.java.simulated.readwrite.types.SimulatedDataTypeSizes;
-import org.apache.plc4x.java.spi.generation.ParseException;
-import org.apache.plc4x.java.spi.generation.ReadBuffer;
-
+import org.apache.plc4x.java.api.value.PlcValue;
 import org.apache.plc4x.java.spi.model.DefaultPlcSubscriptionField;
 import org.apache.plc4x.java.spi.values.IEC61131ValueHandler;
 import org.apache.plc4x.java.simulated.field.SimulatedField;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.*;
@@ -46,8 +36,6 @@ import java.util.function.Consumer;
  * Values are stored in a HashMap.
  */
 public class SimulatedDevice {
-
-    private static final Logger logger = LoggerFactory.getLogger(SimulatedDevice.class);
 
     private final Random random = new Random();
 
@@ -75,7 +63,7 @@ public class SimulatedDevice {
             case STATE:
                 return Optional.ofNullable(state.get(field));
             case RANDOM:
-                return Optional.of(randomValue(field));
+                return Optional.of(randomValue(field.getDataType()));
             case STDOUT:
                 return Optional.empty();
         }
@@ -93,7 +81,7 @@ public class SimulatedDevice {
                 state.put(field, value);
                 return;
             case STDOUT:
-                logger.info("TEST PLC STDOUT [{}]: {}", field.getName(), value.getString());
+                System.out.printf("TEST PLC STDOUT [%s]: %s%n", field.getName(), value.getString());
                 return;
             case RANDOM:
                 switch (field.getPlcDataType()) {
@@ -102,33 +90,59 @@ public class SimulatedDevice {
                         break;
                     default:
                         try {
-                            DataItemIO.staticSerialize(value, field.getPlcDataType(), field.getNumberOfElements(), false);
+                            DataItemIO.staticSerialize(value, field.getPlcDataType(), 1, false);
                         } catch (ParseException e) {
-                            logger.info("Write failed");
+                            System.out.printf("Write failed");
                         }
                 }
-                logger.info("TEST PLC RANDOM [{}]: {}", field.getName(), value.toString());
+                System.out.printf("TEST PLC RANDOM [%s]: %s%n", field.getName(), value.getString());
                 return;
         }
         throw new IllegalArgumentException("Unsupported field type: " + field.getType().name());
     }
 
     @SuppressWarnings("unchecked")
-    private PlcValue randomValue(SimulatedField field) {
+    private PlcValue randomValue(Class<?> type) {
         Object result = null;
 
-        Short fieldDataTypeSize = field.getDataType().getDataTypeSize();
-
-        byte[] b = new byte[fieldDataTypeSize * field.getNumberOfElements()];
-        new Random().nextBytes(b);
-
-        ReadBuffer io = new ReadBuffer(b);
-        try {
-            return DataItemIO.staticParse(io, field.getPlcDataType(), field.getNumberOfElements());
-        } catch (ParseException e) {
-            return null;
+        if (type.equals(Byte.class)) {
+            return IEC61131ValueHandler.of((byte) random.nextInt(1 << 8));
+        }
+        if (type.equals(Short.class)) {
+            return IEC61131ValueHandler.of((short) random.nextInt(1 << 16));
         }
 
+        if (type.equals(Integer.class)) {
+            return IEC61131ValueHandler.of(random.nextInt());
+        }
+
+        if (type.equals(Long.class)) {
+            return IEC61131ValueHandler.of(random.nextLong());
+        }
+
+        if (type.equals(Float.class)) {
+            return IEC61131ValueHandler.of(random.nextFloat());
+        }
+
+        if (type.equals(Double.class)) {
+            return IEC61131ValueHandler.of(random.nextDouble());
+        }
+
+        if (type.equals(Boolean.class)) {
+            return IEC61131ValueHandler.of(random.nextBoolean());
+        }
+
+        if (type.equals(String.class)) {
+            int length = random.nextInt(100);
+            StringBuilder sb = new StringBuilder(length);
+            for (int i = 0; i < length; i++) {
+                char c = (char) ('a' + random.nextInt(26));
+                sb.append(c);
+            }
+            return IEC61131ValueHandler.of(sb.toString());
+        }
+
+        return null;
     }
 
     @Override

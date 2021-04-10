@@ -42,7 +42,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -142,8 +141,6 @@ public class Plc4xNettyWrapper<T> extends MessageToMessageCodec<T, Object> {
             if (registration.getTimeoutAt().isBefore(now)) {
                 logger.debug("Removing {} as its timed out (timeout of {} was set till {} and now is {})",
                     registration, registration.getTimeout(), registration.getTimeoutAt(), now);
-                // pass timeout back to caller so it can do ie. transaction compensation
-                registration.getOnTimeoutConsumer().accept(new TimeoutException());
                 iter.remove();
                 continue;
             }

@@ -262,29 +262,25 @@ public class ModbusProtocolLogic extends Plc4xProtocolBase<ModbusTcpADU> impleme
             return new ModbusPDUReadHoldingRegistersRequest(holdingRegister.getAddress(), Math.max(holdingRegister.getLengthWords(), 1));
         } else if(field instanceof ModbusExtendedRegister) {
             ModbusExtendedRegister extendedRegister = (ModbusExtendedRegister) field;
-            int group1Address = extendedRegister.getAddress() % 10000;
-            int group2Address = 0;
-            int group1Quantity;
-            int group2Quantity;
-            short group1FileNumber = (short) (Math.floor(extendedRegister.getAddress() / 10000) + 1);
-            short group2FileNumber;
+            int group1_address = extendedRegister.getAddress() % 10000;
+            int group2_address = 0;
+            int group1_quantity, group2_quantity;
+            short group1_file_number = (short) (Math.floor(extendedRegister.getAddress() / 10000) + 1);
+            short group2_file_number;
             ModbusPDUReadFileRecordRequestItem[] itemArray;
 
-            if ((group1Address + extendedRegister.getLengthWords()) <= FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH) {
-              // If request doesn't span file records, use a single group
-              group1Quantity = extendedRegister.getLengthWords();
-              ModbusPDUReadFileRecordRequestItem group1 =
-                  new ModbusPDUReadFileRecordRequestItem((short) 6, group1FileNumber, group1Address, group1Quantity);
+            if ((group1_address + extendedRegister.getLengthWords()) <= FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH) {
+              //If request doesn't span file records, use a single group
+              group1_quantity = extendedRegister.getLengthWords();
+              ModbusPDUReadFileRecordRequestItem group1 = new ModbusPDUReadFileRecordRequestItem((short) 6, group1_file_number, group1_address, group1_quantity);
               itemArray = new ModbusPDUReadFileRecordRequestItem[] {group1};
             } else {
-              // If it doesn't span a file record. e.g. 609998[10] request 2 words in first group and 8 in second.
-              group1Quantity = FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH - group1Address;
-              group2Quantity = extendedRegister.getLengthWords() - group1Quantity;
-              group2FileNumber = (short) (group1FileNumber + 1);
-              ModbusPDUReadFileRecordRequestItem group1 =
-                  new ModbusPDUReadFileRecordRequestItem((short) 6, group1FileNumber, group1Address, group1Quantity);
-              ModbusPDUReadFileRecordRequestItem group2 =
-                  new ModbusPDUReadFileRecordRequestItem((short) 6, group2FileNumber, group2Address, group2Quantity);
+              //If it doesn't span a file record. e.g. 609998[10] request 2 words in first group and 8 in second.
+              group1_quantity = FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH - group1_address;
+              group2_quantity = extendedRegister.getLengthWords() - group1_quantity;
+              group2_file_number = (short) (group1_file_number + 1);
+              ModbusPDUReadFileRecordRequestItem group1 = new ModbusPDUReadFileRecordRequestItem((short) 6, group1_file_number, group1_address, group1_quantity);
+              ModbusPDUReadFileRecordRequestItem group2 = new ModbusPDUReadFileRecordRequestItem((short) 6, group2_file_number, group2_address, group2_quantity);
               itemArray = new ModbusPDUReadFileRecordRequestItem[] {group1, group2};
             }
             return new ModbusPDUReadFileRecordRequest(itemArray);
@@ -295,8 +291,7 @@ public class ModbusProtocolLogic extends Plc4xProtocolBase<ModbusTcpADU> impleme
     private ModbusPDU getWriteRequestPdu(PlcField field, PlcValue plcValue) {
         if(field instanceof ModbusFieldCoil) {
             ModbusFieldCoil coil = (ModbusFieldCoil) field;
-            ModbusPDUWriteMultipleCoilsRequest request =
-                new ModbusPDUWriteMultipleCoilsRequest(coil.getAddress(), coil.getNumberOfElements(),
+            ModbusPDUWriteMultipleCoilsRequest request = new ModbusPDUWriteMultipleCoilsRequest(coil.getAddress(), coil.getNumberOfElements(),
                 fromPlcValue(field, plcValue));
             if (request.getQuantity() == coil.getNumberOfElements()) {
                 return request;
@@ -306,8 +301,7 @@ public class ModbusProtocolLogic extends Plc4xProtocolBase<ModbusTcpADU> impleme
             }
         } else if(field instanceof ModbusFieldHoldingRegister) {
             ModbusFieldHoldingRegister holdingRegister = (ModbusFieldHoldingRegister) field;
-            ModbusPDUWriteMultipleHoldingRegistersRequest request =
-                new ModbusPDUWriteMultipleHoldingRegistersRequest(holdingRegister.getAddress(),
+            ModbusPDUWriteMultipleHoldingRegistersRequest request = new ModbusPDUWriteMultipleHoldingRegistersRequest(holdingRegister.getAddress(),
                 holdingRegister.getLengthWords(), fromPlcValue(field, plcValue));
             if (request.getValue().length == holdingRegister.getLengthWords()*2) {
                 return request;
@@ -317,34 +311,28 @@ public class ModbusProtocolLogic extends Plc4xProtocolBase<ModbusTcpADU> impleme
             }
         } else if(field instanceof ModbusExtendedRegister) {
             ModbusExtendedRegister extendedRegister = (ModbusExtendedRegister) field;
-            int group1Address = extendedRegister.getAddress() % FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH;
-            int group2Address = 0;
-            int group1Quantity;
-            int group2Quantity;
+            int group1_address = extendedRegister.getAddress() % FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH;
+            int group2_address = 0;
+            int group1_quantity, group2_quantity;
             byte[] plcValue1, plcValue2;
-            short group1FileNumber = (short)
-                (Math.floor(extendedRegister.getAddress() / FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH) + 1);
-            short group2FileNumber;
+            short group1_file_number = (short) (Math.floor(extendedRegister.getAddress() / FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH) + 1);
+            short group2_file_number;
             ModbusPDUWriteFileRecordRequestItem[] itemArray;
-            if ((group1Address + extendedRegister.getLengthWords()) <= FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH) {
+            if ((group1_address + extendedRegister.getLengthWords()) <= FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH) {
               //If request doesn't span file records, use a single group
-              group1Quantity = extendedRegister.getLengthWords();
-              ModbusPDUWriteFileRecordRequestItem group1 = new ModbusPDUWriteFileRecordRequestItem(
-                  (short) 6, group1FileNumber, group1Address, fromPlcValue(field, plcValue));
+              group1_quantity = extendedRegister.getLengthWords();
+              ModbusPDUWriteFileRecordRequestItem group1 = new ModbusPDUWriteFileRecordRequestItem((short) 6, group1_file_number, group1_address, fromPlcValue(field, plcValue));
               itemArray = new ModbusPDUWriteFileRecordRequestItem[] {group1};
             } else {
-              //If it doesn't span a file record. e.g. 609998[10] request 2 words in first group and 8 in second.
-              group1Quantity = FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH - group1Address;
-              group2Quantity = extendedRegister.getLengthWords() - group1Quantity;
-              group2FileNumber = (short) (group1FileNumber + 1);
+              //If it doesn span a file record. e.g. 609998[10] request 2 words in first group and 8 in second.
+              group1_quantity = FC_EXTENDED_REGISTERS_FILE_RECORD_LENGTH - group1_address;
+              group2_quantity = extendedRegister.getLengthWords() - group1_quantity;
+              group2_file_number = (short) (group1_file_number + 1);
 
-              plcValue1 = ArrayUtils.subarray(fromPlcValue(field, plcValue), 0, group1Quantity);
-              plcValue2 = ArrayUtils.subarray(
-                  fromPlcValue(field, plcValue), group1Quantity, fromPlcValue(field, plcValue).length);
-              ModbusPDUWriteFileRecordRequestItem group1 = new ModbusPDUWriteFileRecordRequestItem(
-                  (short) 6, group1FileNumber, group1Address, plcValue1);
-              ModbusPDUWriteFileRecordRequestItem group2 = new ModbusPDUWriteFileRecordRequestItem(
-                  (short) 6, group2FileNumber, group2Address, plcValue2);
+              plcValue1 = ArrayUtils.subarray(fromPlcValue(field, plcValue), 0, group1_quantity);
+              plcValue2 = ArrayUtils.subarray(fromPlcValue(field, plcValue), group1_quantity, fromPlcValue(field, plcValue).length);
+              ModbusPDUWriteFileRecordRequestItem group1 = new ModbusPDUWriteFileRecordRequestItem((short) 6, group1_file_number, group1_address, plcValue1);
+              ModbusPDUWriteFileRecordRequestItem group2 = new ModbusPDUWriteFileRecordRequestItem((short) 6, group2_file_number, group2_address, plcValue2);
               itemArray = new ModbusPDUWriteFileRecordRequestItem[] {group1, group2};
             }
             return new ModbusPDUWriteFileRecordRequest(itemArray);
@@ -352,8 +340,8 @@ public class ModbusProtocolLogic extends Plc4xProtocolBase<ModbusTcpADU> impleme
         throw new PlcRuntimeException("Unsupported write field type " + field.getClass().getName());
     }
 
-    private PlcValue toPlcValue(ModbusPDU request, ModbusPDU response, ModbusDataType dataType) throws ParseException {
-        Short fieldDataTypeSize = dataType.getDataTypeSize();
+    private PlcValue toPlcValue(ModbusPDU request, ModbusPDU response, String dataType) throws ParseException {
+        Short fieldDataTypeSize = ModbusDataTypeSizes.enumForValue(dataType).getDataTypeSize();
 
         if (request instanceof ModbusPDUReadDiscreteInputsRequest) {
             if (!(response instanceof ModbusPDUReadDiscreteInputsResponse)) {
@@ -426,14 +414,14 @@ public class ModbusProtocolLogic extends Plc4xProtocolBase<ModbusTcpADU> impleme
     }
 
     private byte[] fromPlcValue(PlcField field, PlcValue plcValue) {
-        ModbusDataType fieldDataType = ((ModbusField) field).getDataType();
+        String fieldDataType = ((ModbusField) field).getDataType();
         try {
             WriteBuffer buffer;
             if(plcValue instanceof PlcList) {
                 buffer = DataItemIO.staticSerialize(plcValue, fieldDataType, plcValue.getLength(), false);
                 byte[] data = buffer.getData();
                 switch (((ModbusField) field).getDataType()) {
-                    case BOOL:
+                    case "BOOL":
                         //Reverse Bits in each byte as
                         //they should ordered like this: 8 7 6 5 4 3 2 1 | 0 0 0 0 0 0 0 9
                         byte[] bytes = new byte[data.length];
@@ -471,7 +459,7 @@ public class ModbusProtocolLogic extends Plc4xProtocolBase<ModbusTcpADU> impleme
     private PlcValue readBooleanList(int count, byte[] data) throws ParseException {
         ReadBuffer io = new ReadBuffer(data);
         if(count == 1) {
-            return DataItemIO.staticParse(io, ModbusDataType.BOOL, 1);
+            return DataItemIO.staticParse(io, "IEC61131_BOOL", 1);
         }
         // Make sure we read in all the bytes. Unfortunately when requesting 9 bytes
         // they are ordered like this: 8 7 6 5 4 3 2 1 | 0 0 0 0 0 0 0 9
